@@ -23,6 +23,8 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'ruby-progressbar', '~> 1.7.5'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -45,7 +47,6 @@ group :development, :test do
   gem 'sqlite3'
 
   gem 'rubocop', require: false
-
 
   gem 'rspec-rails'
 end
