@@ -23,16 +23,13 @@
       </div>
       <div class="form-group">
         <%= f.label :password, class: 'sr-only' %>
-        <% if @validatable %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password', :required => true %>
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password (8 characters minimum)', :required => true %>
       </div>
       <div class="form-group">
         <%= f.label :password_confirmation, class: 'sr-only'  %>
         <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Confirmation password', :required => true %>
       </div>
-      <div class="actions">
+      <div class="form-group">
         <%= f.submit "Sign up", class: 'btn btn-success' %>
       </div>
     <% end %>
