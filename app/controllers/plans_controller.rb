@@ -18,7 +18,7 @@ class PlansController < ApplicationController
       flash[:success] = 'Plan was successfully created.'
       redirect_to plans_path
     else
-      flash[:danger] = 'Plan was unsuccessfully created.'
+      flash[:danger] = 'Plan was not created.'
       render :new
     end
   end
