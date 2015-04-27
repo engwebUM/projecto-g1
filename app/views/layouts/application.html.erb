@@ -7,8 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<p class="notice"><%= notice %></p>
- <p class="alert"><%= alert %></p>
+<%= render 'layouts/flash_messages' %>
 <% if current_user.present? %>
   <%= current_user.email %>
   <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
@@ -17,6 +16,5 @@
   <%= link_to "Sign in", new_user_session_path %>
 <% end %>
 <%= yield %>
-
 </body>
 </html>
