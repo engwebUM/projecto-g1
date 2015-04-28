@@ -12,8 +12,8 @@
           <div id="error_explanation">
             <h4><%= pluralize(@plan.errors.count, "error") %> prevented this plan
               from being saved:</h4>
-            <div class="alert alert-error alert-block">
-              <button type="button" class="close" data-dismiss='alert'>x</button>
+            <div class="alert alert-error">
+              <button type="button" class="close" data-dismiss="alert">x</button>
               <ul>
                 <% @plan.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
