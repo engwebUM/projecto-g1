@@ -1,11 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-offset-2 col-md-8">
-    <div class="page-header">
-      <h3>Create a new Plan</h3>
-    </div>
-
-    <%= form_for(@plan, :html => { :multipart => true }) do |f| %>
+      <div class="page-header">
+        <h3>Create a new Plan</h3>
+      </div>
+      <%= form_for(@plan, :html => { :multipart => true }) do |f| %>
       <% if @plan.errors.any? %>
       <div class="row">
         <div class="col-md-12">
@@ -48,9 +47,7 @@
           </div>
         </div>
       </div>
-
       <hr>
-
       <div class="panel panel-primary">
         <div class="panel-heading">
           <h3 class="panel-title">Benefits</h3>
@@ -73,9 +70,7 @@
           </div>
         </div>
       </div>
-
       <hr>
-
       <div class="panel panel-primary">
         <div class="panel-heading">
           <h3 class="panel-title">Additional information</h3>
