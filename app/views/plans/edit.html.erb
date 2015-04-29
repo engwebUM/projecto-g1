@@ -2,9 +2,10 @@
   <div class="row">
     <div class="col-md-offset-2 col-md-8">
       <div class="page-header">
-        <h3>Show Plan</h3>
+        <h3>Edit Plan</h3>
+        <%= plan_path(@plan) %>
       </div>
-      <%= form_for(@plan, :html => { :multipart => true }) do |f| %>
+      <%= form_for(@plan, url: plan_path(@plan) ,method: :put, :html => { :multipart => true }) do |f| %>
       <% if @plan.errors.any? %>
       <div class="row">
         <div class="col-md-12">
@@ -84,7 +85,7 @@
         </div>
       </div>
       <div class="actions">
-        <!-- <%= f.submit "Save Changes", class: 'btn btn-success' %> -->
+        <%= f.submit "Save Changes", class: 'btn btn-success' %>
       </div>
       <% end %>
     </div>

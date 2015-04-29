@@ -13,6 +13,10 @@ class PlansController < ApplicationController
     @plan = Plan.new
   end
 
+  def edit
+    @plan = Plan.find(params[:id])
+  end
+
   def create
     @plan = Plan.new(plan_params)
     if @plan.save
@@ -21,6 +25,16 @@ class PlansController < ApplicationController
     else
       flash[:danger] = 'Plan was not created.'
       render :new
+    end
+  end
+
+  def update
+    @plan = Plan.find(params[:id])
+
+    if @plan.update(plan_params)
+      redirect_to @plan
+    else
+      render 'edit'
     end
   end
 
