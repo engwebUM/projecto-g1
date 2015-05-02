@@ -1,20 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>ProjectoG1</title>
+  <meta charset="utf-8">
+  <title>RUBYCONF - Sponsors</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
 <%= render 'layouts/flash_messages' %>
 <% if current_user.present? %>
   <%= current_user.email %>
   <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+
 <% else %>
   <%= link_to "Register", new_user_registration_path %>/
   <%= link_to "Sign in", new_user_session_path %>
 <% end %>
 <%= yield %>
+
+
+
 </body>
 </html>
