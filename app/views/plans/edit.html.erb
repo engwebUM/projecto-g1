@@ -5,7 +5,7 @@
         <h3>Edit Plan</h3>
         <%= plan_path(@plan) %>
       </div>
-      <%= form_for(@plan, url: plan_path(@plan) , method: :put, html: { multipart: true }) do |f| %>
+      <%= form_for(@plan, url: plan_path(@plan) ,method: :put, html: { multipart: true }) do |f| %>
       <% if @plan.errors.any? %>
       <div class="row">
         <div class="col-md-12">
