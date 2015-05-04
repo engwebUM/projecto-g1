@@ -28,6 +28,20 @@ class SponsorsController < ApplicationController
     end
   end
 
+  def edit
+    @sponsor = Sponsor.find(params[:id])
+    @steps = STATES
+  end
+
+  def update
+    @sponsor = Sponsor.find(params[:id])
+    if @sponsor.update(sponsor_params)
+      redirect_to bookings_path
+    else
+      render 'edit'
+    end
+  end
+
   private
 
   def sponsor_params
