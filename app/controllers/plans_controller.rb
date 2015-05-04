@@ -44,7 +44,6 @@ class PlansController < ApplicationController
       flash[:danger] = 'Plan was not removed.'
     end
     redirect_to plans_path
-
   end
 
   private
