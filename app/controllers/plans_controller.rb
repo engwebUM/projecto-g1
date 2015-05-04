@@ -29,7 +29,7 @@ class PlansController < ApplicationController
   end
 
   def update
-     @plan = Plan.find(params[:id])
+    @plan = Plan.find(params[:id])
 
      if @plan.update(plan_params)
        flash[:success] = 'Plan was successfully updated.'
@@ -38,7 +38,7 @@ class PlansController < ApplicationController
        flash[:danger] = 'Plan was not created.'
        render :edit
      end
-   end
+  end
 
   private
 
