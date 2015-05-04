@@ -29,14 +29,16 @@ class PlansController < ApplicationController
   end
 
   def update
-    @plan = Plan.find(params[:id])
+     @plan = Plan.find(params[:id])
 
-    if @plan.update(plan_params)
-      redirect_to @plan
-    else
-      render 'edit'
-    end
-  end
+     if @plan.update(plan_params)
+       flash[:success] = 'Plan was successfully updated.'
+       redirect_to edit_plan_path
+     else
+       flash[:danger] = 'Plan was not created.'
+       render :edit
+     end
+   end
 
   private
 
