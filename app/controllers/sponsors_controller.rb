@@ -7,6 +7,8 @@ class SponsorsController < ApplicationController
   STATES = [[FIRST_CONTACT_STATE, 1], [FINISHED_CONTACT_STATE, 2]]
 
   def index
+    @sponsors = Sponsor.all
+    @steps = STATES
   end
 
   def show
@@ -19,6 +21,7 @@ class SponsorsController < ApplicationController
 
   def create
     @sponsor = Sponsor.new(sponsor_params)
+    @steps = STATES
     if @sponsor.save
       flash[:success] = 'Sponsor was successfully created.'
       redirect_to sponsors_path
