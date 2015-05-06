@@ -1,0 +1,8 @@
+<tr>
+  <td><%= task.id %></td>
+  <td><%= task.organization %></td>
+  <td><%= task.plan.name %></td>
+  <td><%= task.next_step %></td>
+  <td><%= select_tag "state", options_for_select(State.all, task.state) %></td>
+  <td><%= l task.updated_at, format: :short %></td>
+</tr>

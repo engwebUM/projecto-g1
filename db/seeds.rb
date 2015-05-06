@@ -33,9 +33,8 @@ plans_names.each_with_index do |name, index|
   @plans << create_plan(name, (index + 1) * 10)
 end
 
-states_names = %w(contacted pending waiting\ payment accepted rejected)
 @users.each_with_index do |user, index_user|
-  states_names.each_with_index do |state, index_state|
+  State.all.each_with_index do |state, index_state|
     create_sponsor(index_state + 1 + index_user * @users.size, state, user, @plans[rand @plans.size])
   end
 end
