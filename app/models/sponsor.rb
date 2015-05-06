@@ -1,6 +1,6 @@
 class Sponsor < ActiveRecord::Base
-  has_one :plan
-  has_one :user
+  belongs_to :plan
+  belongs_to :user
 
   validates :organization, presence: true, uniqueness: true
   validates :person_name, presence: true
