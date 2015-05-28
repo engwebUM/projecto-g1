@@ -15220,3 +15220,90 @@ Completed 200 OK in 100ms (Views: 98.2ms | ActiveRecord: 0.2ms)
   [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150417121627')[0m
   [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150427112842')
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2015-05-28 22:41:28 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 401 Unauthorized in 21ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-05-28 22:41:28 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered layouts/_conference_logo.html.erb (98.8ms)
+  Rendered users/shared/_links.html.erb (4.8ms)
+  Rendered users/sessions/new.html.erb within layouts/simple (119.4ms)
+  Rendered layouts/_flash_messages.html.erb (0.8ms)
+Completed 200 OK in 256ms (Views: 246.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-05-28 22:41:36 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"l0pEpDqxGAH7gSkLcxAHA/qzcAwEvimmxB+fyJF2j8144fu5j4GeslCeVOdW9h9ZxupN5bpMv9Uo+lUjYGmB4g==", "user"=>{"email"=>"teste@teste.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "teste@teste.com"]]
+Completed 401 Unauthorized in 6ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"l0pEpDqxGAH7gSkLcxAHA/qzcAwEvimmxB+fyJF2j8144fu5j4GeslCeVOdW9h9ZxupN5bpMv9Uo+lUjYGmB4g==", "user"=>{"email"=>"teste@teste.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered layouts/_conference_logo.html.erb (2.7ms)
+  Rendered users/shared/_links.html.erb (5.1ms)
+  Rendered users/sessions/new.html.erb within layouts/simple (15.2ms)
+  Rendered layouts/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 220ms (Views: 124.9ms | ActiveRecord: 0.0ms)
+  [1m[36m (8.1ms)[0m  [1mDROP TABLE "plans"[0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "plans" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slots" integer, "price" float, "tickets" integer, "discount_coupon" float, "discount_tickets" integer, "description" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (1.3ms)[0m  [1mDROP TABLE "sponsors"[0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "sponsors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "organization" varchar, "person_name" varchar, "person_role" varchar, "person_email" varchar, "person_phone" varchar, "extra_pay" float, "state" varchar, "next_step" varchar, "notes" text, "user_id" integer, "plan_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.8ms)[0m  CREATE  INDEX "index_sponsors_on_plan_id" ON "sponsors" ("plan_id")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_sponsors_on_plan_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_sponsors_on_plan_id' AND type='index'
+[0m
+  [1m[35m (0.9ms)[0m  CREATE  INDEX "index_sponsors_on_user_id" ON "sponsors" ("user_id")
+  [1m[36m (0.9ms)[0m  [1mDROP TABLE "users"[0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar, "last_name" varchar, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (1.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.8ms)[0m  [1mDROP TABLE "plans"[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "plans" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slots" integer, "price" float, "tickets" integer, "discount_coupon" float, "discount_tickets" integer, "description" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mDROP TABLE "sponsors"[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "sponsors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "organization" varchar, "person_name" varchar, "person_role" varchar, "person_email" varchar, "person_phone" varchar, "extra_pay" float, "state" varchar, "next_step" varchar, "notes" text, "user_id" integer, "plan_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.8ms)[0m  CREATE  INDEX "index_sponsors_on_plan_id" ON "sponsors" ("plan_id")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_sponsors_on_plan_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_sponsors_on_plan_id' AND type='index'
+[0m
+  [1m[35m (0.8ms)[0m  CREATE  INDEX "index_sponsors_on_user_id" ON "sponsors" ("user_id")
+  [1m[36m (0.9ms)[0m  [1mDROP TABLE "users"[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar, "last_name" varchar, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
