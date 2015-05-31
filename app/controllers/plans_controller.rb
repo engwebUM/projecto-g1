@@ -30,7 +30,6 @@ class PlansController < ApplicationController
     if @plan.update(plan_params)
       flash[:success] = 'Plan was successfully updated.'
       redirect_to edit_plan_path
-<<<<<<< HEAD
     else
       flash[:danger] = 'Plan was not updated.'
       render :edit
@@ -43,11 +42,6 @@ class PlansController < ApplicationController
       flash[:success] = 'Plan was successfully removed.'
     else
       flash[:danger] = 'Plan was not removed.'
-=======
-    else
-      flash[:danger] = 'Plan was not updated.'
-      render :edit
->>>>>>> 1685e5ce4b41b3f974819ab79c775947822cdb6b
     end
     redirect_to plans_path
   end
