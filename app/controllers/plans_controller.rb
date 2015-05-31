@@ -2,11 +2,7 @@ class PlansController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @plans = Plan.all
-  end
-
-  def show
-    @plan = Plan.find(params[:id])
+    @plans = Plan.paginate(page: params[:page])
   end
 
   def new
@@ -30,12 +26,23 @@ class PlansController < ApplicationController
 
   def update
     @plan = Plan.find(params[:id])
-
     if @plan.update(plan_params)
-      redirect_to @plan
+      flash[:success] = 'Plan was successfully updated.'
+      redirect_to edit_plan_path
     else
-      render 'edit'
+      flash[:danger] = 'Plan was not updated.'
+      render :edit
     end
+  end
+
+  def destroy
+    @plan = Plan.find(params[:id])
+    if @plan.destroy
+      flash[:success] = 'Plan was successfully removed.'
+    else
+      flash[:danger] = 'Plan was not removed.'
+    end
+    redirect_to plans_path
   end
 
   private
