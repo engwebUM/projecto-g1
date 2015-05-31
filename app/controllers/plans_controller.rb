@@ -35,7 +35,7 @@ class PlansController < ApplicationController
       flash[:success] = 'Plan was successfully updated.'
       redirect_to edit_plan_path
     else
-      flash[:danger] = 'Plan was not created.'
+      flash[:danger] = 'Plan was not updated.'
       render :edit
     end
   end

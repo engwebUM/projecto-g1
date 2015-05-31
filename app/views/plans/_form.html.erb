@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-offset-2 col-md-8">
       <div class="page-header">
-        <h3><%= @title %></h3>
+        <h3><%= title %></h3>
       </div>
       <%= form_for(@plan, html: { multipart: true }) do |f| %>
       <% if @plan.errors.any? %>
@@ -30,18 +30,18 @@
         <div class="panel-body">
           <div class="form-group row">
             <div class="col-md-9">
-              <%= f.label :name, class: '' %>
+              <%= f.label :name %>
               <%= f.text_field :name, autofocus: true, class: 'form-control',
               placeholder: 'Plan name', required: true %>
             </div>
             <div class="col-md-3">
-              <%= f.label :slots, class: '' %>
+              <%= f.label :slots %>
               <%= f.number_field :slots, class: 'form-control',
               placeholder: 'Slots', required: true %>
             </div>
           </div>
           <div class="form-group">
-            <%= f.label :price, class: '' %>
+            <%= f.label :price %>
             <%= f.number_field :price, class: 'form-control',
             placeholder: 'Price', required: true %>
           </div>
@@ -56,17 +56,17 @@
           <div class="form-group">
             <div class="form-group row">
               <div class="col-md-4">
-                <%= f.label :tickets, class: '' %>
+                <%= f.label :tickets %>
                 <%= f.number_field :tickets, class: 'form-control',
                 placeholder: 'Tickets', required: true %>
               </div>
               <div class="col-md-4">
-                <%= f.label :discount_coupon, class: '' %>
+                <%= f.label :discount_coupon %>
                 <%= f.number_field :discount_coupon, class: 'form-control',
                 placeholder: 'Discount Coupon', required: true %>
               </div>
               <div class="col-md-4">
-                <%= f.label :discount_tickets, class: '' %>
+                <%= f.label :discount_tickets %>
                 <%= f.number_field :discount_tickets, class: 'form-control',
                 placeholder: 'Discount Tickets', required: true %>
               </div>
@@ -81,7 +81,7 @@
         </div>
         <div class="panel-body">
           <div class="form-group">
-            <%= f.label :description, class: '' %>
+            <%= f.label :description %>
             <%= f.text_area :description, class: 'form-control',
             placeholder: 'Description', required: true  %>
           </div>
