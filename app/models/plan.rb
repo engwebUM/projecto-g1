@@ -1,6 +1,8 @@
 class Plan < ActiveRecord::Base
   belongs_to :sponsor
 
+  self.per_page = 1
+
   validates :name, presence: true
   validates_numericality_of :slots, greater_than: 0, presence: true
   validates_numericality_of :price, greater_than_or_equal_to: 0,

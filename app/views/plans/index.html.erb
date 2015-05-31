@@ -1,19 +1,37 @@
-<h1>Listing Plans</h1>
-
-<table>
-  <tr>
-    <th>Plan Name</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-  <% @plans.each do |plan| %>
-    <tr>
-      <td><%= plan.name %></td>
-      <td> <%= link_to 'Show', plan_path(plan) %></td>
-      <td> <%= link_to 'Edit', edit_plan_path(plan) %></td>
-    </tr>
-  <% end %>
-</table>
-
-<a href="/plans/new">Create New Plan</a>
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+      <div class="page-header">
+        <h3>Listing Plans
+          <%= link_to new_plan_path, class: "btn btn-primary btn-sm" do %>
+           <span class="glyphicon glyphicon-list-alt"></span> Create New Plan
+          <% end %>
+        </h3>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <tr>
+            <th class="col-md-9">Plans</th>
+            <th class="col-md-3"></th>
+          </tr>
+          <% @plans.each do |plan| %>
+            <tr>
+              <td><%= plan.name %></td>
+              <td>
+              <%= link_to edit_plan_path(plan), class: "btn btn-info btn-xs" do %>
+               <span class="glyphicon glyphicon-edit"></span> Edit
+              <% end %>
+              <%= link_to plan, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" do %>
+               <span class="glyphicon glyphicon-remove-circle"></span> Remove
+              <% end %>
+            </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+      <div class="text-center">
+        <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+      </div>
+    </div>
+  </div>
+</div>
