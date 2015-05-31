@@ -1,0 +1,16 @@
+<div>
+  <div class="logo">
+    <%= image_tag("conference_logo.png", class: 'main-logo-size') %>
+  </div>
+    <div class="menu header clearfix">
+      <nav>
+        <ul class="nav nav-pills pull-right">
+          <li role="presentation" class="active"><a href="#">My Work</a></li>
+          <li role="presentation"><%= link_to('Plans', plans_path) %></a></li>
+          <li role="presentation"><a href="#">Financial</a></li>
+          <li role="presentation"><%= link_to(current_user.first_name, edit_user_registration_path) %></li>
+          <li role="presentation"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+        </ul>
+      </nav>
+  </div>
+</div>
