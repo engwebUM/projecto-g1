@@ -25,7 +25,6 @@ class PlansController < ApplicationController
   end
 
   def update
-
     @plan = Plan.find(params[:id])
     if @plan.update(plan_params)
       flash[:success] = 'Plan was successfully updated.'
