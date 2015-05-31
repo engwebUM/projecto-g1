@@ -12,7 +12,7 @@ class CreateSponsors < ActiveRecord::Migration
       t.text :notes
 
       t.belongs_to :user, index: true
-      t.belongs_to :plan, index: true 
+      t.belongs_to :plan, index: true
 
       t.timestamps null: false
     end
