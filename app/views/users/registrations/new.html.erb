@@ -1,44 +1,44 @@
 <div class="row">
   <div class="col-md-offset-4 col-md-4">
-      <%= render 'layouts/conference_logo' %>
-      <div class="page-header">
-        <h3>Sign Up</h3>
+    <%= render 'layouts/conference_logo' %>
+    <div class="page-header">
+      <h3>Sign Up</h3>
+    </div>
+    <div class="form alert" role="alert">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+      <div class="form-group row">
+        <div class="col-md-6">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name, autofocus: true, class: 'form-control', placeholder: 'Roberto', required: true %>
+        </div>
+        <div class="col-md-6">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name,  class: 'form-control', placeholder: 'Machado', required: true %>
+        </div>
       </div>
-      <div class="form alert" role="alert">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
-        <div class="form-group row">
-          <div class="col-md-6">
-            <%= f.label :first_name, class: 'sr-only' %>
-            <%= f.text_field :first_name, autofocus: true, class: 'form-control', placeholder: 'First Name', :required => true %>
-          </div>
-          <div class="col-md-6">
-            <%= f.label :last_name, class: 'sr-only' %>
-            <%= f.text_field :last_name,  class: 'form-control', placeholder: 'Last Name', :required => true %>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :email, class: 'sr-only' %>
-          <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email', :required => true %>
-        </div>
-        <div class="form-group">
-          <%= f.label :password, class: 'sr-only' %>
-          <% if @validatable %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password', :required => true %>
-        </div>
-        <div class="form-group">
-          <%= f.label :password_confirmation, class: 'sr-only'  %>
-          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Confirmation password', :required => true %>
-        </div>
-        <div class="actions">
-          <%= f.submit "Sign up", class: 'btn btn-success' %>
-        </div>
-      <% end %>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'rmd@groupbuddies.com', required: true %>
       </div>
-      <footer class="footer">
-        <%= render "users/shared/links" %>
-      </footer>
+      <div class="form-group">
+        <%= f.label :password %>
+        <% if @validatable %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password', required: true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation  %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Confirmation password', required: true %>
+      </div>
+      <div class="actions text-right">
+        <%= f.submit "Sign up", class: 'btn btn-success' %>
+      </div>
+    <% end %>
+    </div>
+    <footer class="footer">
+      <%= render "users/shared/links" %>
+    </footer>
   </div>
 </div>

@@ -2,21 +2,37 @@
   <div class="row">
     <div class="col-md-offset-2 col-md-8">
       <div class="page-header">
-        <h3>Listing Plans
-          <%= link_to new_plan_path, class: "btn btn-primary btn-sm" do %>
+        <h3>Plans Available
+          <%= link_to new_plan_path, class: "btn btn-primary btn-xs" do %>
            <span class="glyphicon glyphicon-list-alt"></span> Create New Plan
           <% end %>
         </h3>
       </div>
+      <% if @plans.empty? %>
+      <div>
+        No plans available.
+      </div>
+      <% else %>
       <div class="table-responsive">
         <table class="table table-hover">
           <tr>
-            <th class="col-md-9">Plans</th>
+            <th class="col-md-2">Plans</th>
+            <th class="col-md-2">Base Price</th>
+            <th class="col-md-5"></th>
             <th class="col-md-3"></th>
           </tr>
           <% @plans.each do |plan| %>
-            <tr>
-              <td><%= plan.name %></td>
+            <tr class="info">
+              <td><b><%= plan.name %></b> <i>(<%= plan.slots %> slots)</i></td>
+              <td><%= plan.price %> €</td>
+              <td>
+                <a data-toggle="collapse" href="#collapse<%= plan.id %>" aria-expanded="false" aria-controls="collapse<%= plan.id %>">
+                  See more +
+                </a>
+                <div class="collapse" id="collapse<%= plan.id %>">
+                  <%= plan.description %>
+                </div>
+              </td>
               <td>
               <%= link_to edit_plan_path(plan), class: "btn btn-info btn-xs" do %>
                <span class="glyphicon glyphicon-edit"></span> Edit
@@ -24,7 +40,7 @@
               <%= link_to plan, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" do %>
                <span class="glyphicon glyphicon-remove-circle"></span> Remove
               <% end %>
-            </td>
+              </td>
             </tr>
           <% end %>
         </table>
@@ -32,6 +48,7 @@
       <div class="text-center">
         <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
       </div>
+      <% end %>
     </div>
   </div>
 </div>
