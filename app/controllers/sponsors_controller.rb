@@ -4,7 +4,7 @@ class SponsorsController < ApplicationController
   before_action :set_states, only: [:index, :new,  :create, :edit, :update]
 
   def index
-    @sponsors = Sponsor.all
+    @sponsors = Sponsor.paginate(page: params[:page])
   end
 
   def show
