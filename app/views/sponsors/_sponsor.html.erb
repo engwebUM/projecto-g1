@@ -1,0 +1,20 @@
+<tr data-link='<%= sponsor_path(sponsor) %>'>
+    <td><%= link_to sponsor.organization, sponsor_path(sponsor)  %></td>
+    <td><%= sponsor.person_name %></td>
+    <td><%= sponsor.person_role %></td>
+    <td><%= sponsor.person_email %></td>
+    <td><%= sponsor.person_phone %></td>
+    <td><%= sponsor.extra_pay %></td>
+    <td><%= sponsor.state %></td>
+    <td><%= sponsor.next_step %></td>
+    <td><%= sponsor.notes.truncate(20) %></td>
+    <td class="text-right">
+    <%= link_to edit_sponsor_path(sponsor), class: "btn btn-info btn-xs" do %>
+     <span class="glyphicon glyphicon-edit"></span>
+    <% end %>
+    <%= link_to sponsor, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" do %>
+     <span class="glyphicon glyphicon-remove-circle"></span>
+    <% end %>
+    </td>
+    </td>
+</tr>
