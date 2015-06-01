@@ -1,1 +1,31 @@
-<h2>This is the Show page</h2>
+<div class="container">
+    <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+      <div class="panel-body">
+        <div class="row">
+          <h2><%= @sponsor.organization %></h2>
+          <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Responsible Name</th>
+                    <th>Responsible Role</th>
+                    <th>Responsible Email</th>
+                    <th>Responsible Phone</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <td><%= @sponsor.person_name %></td>
+                  <td><%= @sponsor.person_role %></td>
+                  <td><%= @sponsor.person_email %></td>
+                  <td><%= @sponsor.person_phone %></td>
+                </tbody>
+          </table>
+          <h3><b>Extra Pay: </b><%= @sponsor.extra_pay %></h3>
+          <h3><b>State: </b><%= @sponsor.state %></h3>
+          <h3><b>Next Step: </b><%= @sponsor.next_step %></h3>
+          <h3><b>Person Phone: </b><%= @sponsor.person_phone %></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

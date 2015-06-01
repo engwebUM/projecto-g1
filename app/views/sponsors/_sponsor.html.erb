@@ -1,5 +1,5 @@
 <tr data-link='<%= sponsor_path(sponsor) %>'>
-    <td><%= sponsor.organization %></td>
+    <td><%= link_to sponsor.organization, sponsor_path(sponsor)  %></td>
     <td><%= sponsor.person_name %></td>
     <td><%= sponsor.person_role %></td>
     <td><%= sponsor.person_email %></td>
@@ -8,14 +8,12 @@
     <td><%= sponsor.state %></td>
     <td><%= sponsor.next_step %></td>
     <td><%= sponsor.notes.truncate(20) %></td>
-    <td>
+    <td class="text-right">
     <%= link_to edit_sponsor_path(sponsor), class: "btn btn-info btn-xs" do %>
-     <span class="glyphicon glyphicon-edit"> Edit</span>
+     <span class="glyphicon glyphicon-edit"></span>
     <% end %>
-    </td>
-    <td>
     <%= link_to sponsor, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" do %>
-     <span class="glyphicon glyphicon-remove-circle"> Remove</span>
+     <span class="glyphicon glyphicon-remove-circle"></span>
     <% end %>
     </td>
     </td>
