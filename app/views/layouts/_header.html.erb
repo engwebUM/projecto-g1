@@ -5,10 +5,11 @@
     <div class="menu header clearfix">
       <nav>
         <ul class="nav nav-pills pull-right">
-          <li role="presentation" class="active"><a href="#">My Work</a></li>
+          <li role="presentation" class="active"><%= link_to('My Tasks', tasks_path) %></a></li>
           <li role="presentation"><%= link_to('Plans', plans_path) %></a></li>
           <li role="presentation"><%= link_to('Sponsors', sponsors_path) %></li>
           <li role="presentation"><a href="#">Financial</a></li>
+          <li role="nav-divider"></li>
           <li role="presentation"><%= link_to(current_user.first_name, edit_user_registration_path) %></li>
           <li role="presentation"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
         </ul>

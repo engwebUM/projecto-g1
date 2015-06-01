@@ -1,6 +1,6 @@
 <tr>
   <td><%= task.id %></td>
-  <td><%= task.organization %></td>
+  <td><%= link_to task.organization, sponsor_path(task) %></td>
   <td><%= task.plan.name %></td>
   <td><%= task.next_step %></td>
   <td><%= select_tag "state", options_for_select(State.all, task.state) %></td>
