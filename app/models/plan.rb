@@ -1,5 +1,5 @@
 class Plan < ActiveRecord::Base
-  belongs_to :sponsor
+  has_many :sponsor
 
   self.per_page = 1
 

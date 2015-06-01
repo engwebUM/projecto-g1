@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+      <div class="page-header">
+        <h3>My Unfinished Tasks</h3>
+      </div>
+      <%= render partial: 'task_table', locals: { tasks: @user_unfinished_tasks } %>
+      <div class="page-header">
+        <h3>Finished Tasks</h3>
+      </div>
+      <%= render partial: 'task_table', locals: { tasks: @finished_tasks } %>
+    </div>
+  </div>
+</div>
