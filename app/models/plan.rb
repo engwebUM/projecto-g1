@@ -16,4 +16,9 @@ class Plan < ActiveRecord::Base
                                                less_than_or_equal_to: 100,
                                                presence: true
   validates :description, presence: true
+
+  def incoming_plan_cash
+    sponsor.count * self.price
+  end
+
 end

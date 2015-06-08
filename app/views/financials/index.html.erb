@@ -1,0 +1,68 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+
+<script type="text/javascript">
+var jqxhr = $.getJSON( "http://mysafeinfo.com/api/data?list=englishmonarchs&format=json", function() {
+  console.log( "success" );
+})
+  .done(function() {
+    console.log( "second success" );
+  })
+  .fail(function() {
+    console.log( "error" );
+  })
+  .always(function() {
+    console.log( "complete" );
+  });
+
+// Perform other work here ...
+
+// Set another completion function for the request above
+jqxhr.complete(function() {
+  console.log( "second complete" );
+});
+
+</script>
+
+<script type="text/javascript">
+  google.load("visualization", "1", {packages:["corechart"]});
+  google.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+    ['Plan', 'Incoming Cash'],
+
+	<% @plans.each do |plan| %>
+	['<%= plan.name %>', <%= plan.incoming_plan_cash %>],
+ 	<% end %>
+
+    ]);
+
+    var options = {
+      title: 'Sponsors Plans Distribution',
+      pieHole: 0.4,
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    chart.draw(data, options);
+  }
+</script>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+      <div class="page-header">
+        <h3>Financials</h3>
+      </div>
+      <% if @plans.empty? %>
+      <div>
+        No plans available.
+      </div>
+      <% else %>
+      <div id="piechart" style="width: 900px; height: 500px;"></div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+
