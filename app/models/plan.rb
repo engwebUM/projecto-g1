@@ -18,7 +18,6 @@ class Plan < ActiveRecord::Base
   validates :description, presence: true
 
   def incoming_plan_cash
-    sponsor.count * self.price
+    sponsor.count * price
   end
-
 end
