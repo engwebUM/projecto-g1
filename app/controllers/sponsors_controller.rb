@@ -7,9 +7,6 @@ class SponsorsController < ApplicationController
     @sponsors = Sponsor.paginate(page: params[:page])
   end
 
-  def show
-  end
-
   def new
     @sponsor = Sponsor.new
   end

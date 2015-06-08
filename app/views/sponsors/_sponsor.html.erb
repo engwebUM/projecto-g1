@@ -1,6 +1,6 @@
 <tr data-link='<%= sponsor_path(sponsor) %>'>
   <td>
-    <%= link_to sponsor.organization, sponsor_path(sponsor) %>
+    <%= sponsor.organization %>
     <br/>
     <%= sponsor.person_name %> (<%= sponsor.person_role %>)
   </td>
@@ -20,6 +20,7 @@
     </a>
     <div class="collapse" id="collapse<%= sponsor.id %>">
       <%= sponsor.notes %>
+      <br>
       <%= sponsor.extra_pay %> €
     </div>
   </td>

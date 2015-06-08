@@ -1,5 +1,6 @@
 class PlansController < ApplicationController
   before_filter :authenticate_user!
+  before_action :set_plan, only: [:show, :edit, :update, :destroy]
 
   def index
     @plans = Plan.paginate(page: params[:page])
@@ -10,7 +11,6 @@ class PlansController < ApplicationController
   end
 
   def edit
-    @plan = Plan.find(params[:id])
   end
 
   def create
@@ -25,7 +25,6 @@ class PlansController < ApplicationController
   end
 
   def update
-    @plan = Plan.find(params[:id])
     if @plan.update(plan_params)
       flash[:success] = 'Plan was successfully updated.'
       redirect_to edit_plan_path
@@ -36,7 +35,6 @@ class PlansController < ApplicationController
   end
 
   def destroy
-    @plan = Plan.find(params[:id])
     if @plan.destroy
       flash[:success] = 'Plan was successfully removed.'
     else
@@ -46,6 +44,10 @@ class PlansController < ApplicationController
   end
 
   private
+
+  def set_plan
+    @plan = Plan.find(params[:id])
+  end
 
   def plan_params
     params.require(:plan).permit(:name, :slots, :price, :tickets,
