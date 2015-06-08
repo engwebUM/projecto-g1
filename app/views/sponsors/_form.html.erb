@@ -4,7 +4,6 @@
     <div class="page-header">
       <h3>Create a new Sponsor</h3>
     </div>
-
     <%= form_for@sponsor do |f| %>
       <% if @sponsor.errors.any? %>
       <div class="row">
@@ -24,75 +23,103 @@
         </div>
       </div>
       <% end %>
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title">Add a new Sponsor</h3>
-        </div>
         <div class="panel-body">
-          <div class="form-group">
-              <%= f.label :organization, class: 'sr-only' %>
-              <%= f.text_field :organization, autofocus: true, class: 'form-control',
-              placeholder: 'Organization', required: true %>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Organization Information</h3>
           </div>
-          <div class="form-group">
-              <%= f.label :person_name, class: 'sr-only' %>
-              <%= f.text_field :person_name, class: 'form-control',
-              placeholder: 'Contact Person', required: true %>
-          </div>
-          <div class="form-group">
-            <%= f.label :person_role, class: 'sr-only' %>
-            <%= f.text_field :person_role, class: 'form-control',
-            placeholder: 'Person Post' %>
-          </div>
-          <div class="form-group">
-            <%= f.label :person_email, class: 'sr-only' %>
-            <%= f.text_field :person_email, class: 'form-control',
-            placeholder: 'Person Email', required: true %>
-          </div>
-          <div class="form-group">
-            <%= f.label :person_phone, class: 'sr-only' %>
-            <%= f.text_field :person_phone, class: 'form-control',
-            placeholder: 'Person Phone' %>
-          </div>
-          <div class="form-group">
-            <div class="input-group">
-              <span class="input-group-addon">Responsible User</span>
-              <%= f.label :user_id, class: 'sr-only' %>
-              <%= f.select :user_id, options_from_collection_for_select(User.all, :id, :email, current_user.id), {}, {class: 'form-control'} %>
+          <div class="panel-body">
+            <div class="form-group">
+                <%= f.label :organization %>
+                <%= f.text_field :organization, autofocus: true, class: 'form-control',
+                placeholder: 'e.g. Group Buddies', required: true %>
+            </div>
+            <div class="form-group">
+                <%= f.label :person_name %>
+                <%= f.text_field :person_name, class: 'form-control',
+                placeholder: 'e.g. John Doe', required: true %>
+            </div>
+            <div class="form-group">
+              <%= f.label :person_role %>
+              <%= f.text_field :person_role, class: 'form-control',
+              placeholder: 'e.g. CEO' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :person_email %>
+              <%= f.text_field :person_email, class: 'form-control',
+              placeholder: 'e.g. roberto@groupbuddies.com', required: true %>
+            </div>
+            <div class="form-group">
+              <%= f.label :person_phone %>
+              <%= f.text_field :person_phone, class: 'form-control',
+              placeholder: 'e.g. +(351)984 875 874' %>
             </div>
           </div>
-          <div class="form-group">
-            <div class="input-group">
-              <span class="input-group-addon">Pretended Plan</span>
-              <%= f.label :plan_id, class: 'sr-only' %>
-              <%= f.select :plan_id, options_from_collection_for_select(Plan.all, :id, :name), {}, {class: 'form-control'} %>
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Responsible for Information</h3>
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+              <div class="input-group">
+                <%= f.label :user_id %>
+                <%= f.select :user_id, options_from_collection_for_select(User.all, :id, :email, user_id ), {}, {class: 'form-control'} %>
+              </div>
             </div>
           </div>
-          <div class="form-group">
-            <%= f.label :extra_pay, class: 'sr-only' %>
-            <%= f.text_field :extra_pay, class: 'form-control',
-            placeholder: 'Extra Pay' %>
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Details Adjustment</h3>
           </div>
-          <div class="form-group">
-            <div class="input-group">
-              <span class="input-group-addon">State</span>
-              <%= f.label :state_id, class: 'sr-only' %>
-              <%= f.select :state, @states, {}, {class: 'form-control'} %>
+          <div class="panel-body">
+            <div class="form-group">
+                <% if Plan.all.empty? %>
+                  <div class="input-group col-md-4">
+                    <div class="">
+                    <%= link_to 'New Plan', new_plan_path, {class: 'btn btn-info'} %>
+                    <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="right" title="You must create plans first!" aria-hidden="true"></span>
+                    </div>
+                  </div>
+                  <script type="text/javascript">
+                    $(function () {
+                      $('[data-toggle="tooltip"]').tooltip()
+                    })
+                  </script>
+                <% else %>
+                  <div class="input-group">
+                    <span class="input-group-addon">Pretended Plan</span>
+                    <%= f.label :plan_id %>
+                    <%= f.select :plan_id, options_from_collection_for_select(Plan.all, :id, :name, plan_id ), {}, {class: 'form-control'} %>
+                  </div>
+                <%end%>
             </div>
-          </div>
-          <div class="form-group">
-            <%= f.label :next_step, class: 'sr-only' %>
-            <%= f.text_field :next_step, class: 'form-control',
-            placeholder: 'Next Step' %>
-          </div>
-          <div class="form-group">
-            <%= f.label :notes, class: 'sr-only' %>
-            <%= f.text_area :notes, class: 'form-control',
-            placeholder: 'Notes' %>
+            <div class="form-group">
+              <div class="input-group">
+                <%= f.label :state_id %>
+                <%= f.select :state, @states, {}, {class: 'form-control'} %>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= f.label :extra_pay %>
+              <%= f.text_field :extra_pay, class: 'form-control',
+              placeholder: 'e.g. 20' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :next_step %>
+              <%= f.text_field :next_step, class: 'form-control',
+              placeholder: 'e.g. Send the documents' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :notes %>
+              <%= f.text_area :notes, class: 'form-control',
+              placeholder: 'e.g. This Sponsor wants to negotiate the price and the logo on the shirts.' %>
+            </div>
           </div>
         </div>
       </div>
-      <div class="actions">
+      <div class="actions pull-right">
         <%= f.submit "Save", class: 'btn btn-success' %>
         <%= link_to 'Back', sponsors_path %>
       </div>
