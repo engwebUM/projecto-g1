@@ -1,6 +1,7 @@
 class Sponsor < ActiveRecord::Base
   belongs_to :plan
   belongs_to :user
+  belongs_to :state
 
   self.per_page = 2
 
@@ -8,4 +9,10 @@ class Sponsor < ActiveRecord::Base
   validates :person_name, presence: true
   validates :person_email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   validates :extra_pay, allow_nil: true, numericality: true
+
+  after_save :update_closed_state
+
+  def update_closed_state
+    update_column(:is_final, state.is_final)
+  end
 end

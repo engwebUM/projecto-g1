@@ -19,6 +19,11 @@ def create_sponsor(number, state, user, plan)
                  user_id: user.id, plan_id: plan.id)
 end
 
+def create_state(name, is_final)
+  State.create(name: name,
+               is_final: is_final)
+end
+
 @users = []
 @users << create_user('Admin', 'Test', 'admin@email.com', 'password')
 @users << create_user('Eduardo', 'Pinto', 'eduardo@email.com', 'qwertyuiop')
@@ -33,8 +38,15 @@ plans_names.each_with_index do |name, index|
   @plans << create_plan(name, (index + 1) * 10)
 end
 
+@states = []
+states_names = [['suggested', false], ['contacted', false], ['pending', false],
+                ['accepted', true], ['rejected', true]]
+states_names.each do |state|
+  @states << create_state(state.first, state.second)
+end
+
 @users.each_with_index do |user, index_user|
-  State.all.each_with_index do |state, index_state|
+  @states.each_with_index do |state, index_state|
     create_sponsor(index_state + 1 + index_user * @users.size, state, user, @plans[rand @plans.size])
   end
 end

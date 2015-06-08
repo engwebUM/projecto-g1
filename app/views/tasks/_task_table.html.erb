@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <%= render partial: 'task', collection: tasks %>
+      <%= render partial: 'task', collection: tasks, locals: { states: states } %>
     </tbody>
   </table>
 </div>
