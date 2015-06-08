@@ -4,11 +4,11 @@
       <div class="page-header">
         <h3>My Unfinished Tasks</h3>
       </div>
-      <%= render partial: 'task_table', locals: { tasks: @user_unfinished_tasks } %>
+      <%= render partial: 'task_table', locals: { tasks: @user_unfinished_tasks, param_name: 'page_unfinished' } %>
       <div class="page-header">
         <h3>Finished Tasks</h3>
       </div>
-      <%= render partial: 'task_table', locals: { tasks: @finished_tasks } %>
+      <%= render partial: 'task_table', locals: { tasks: @finished_tasks, param_name: 'page_finished' } %>
     </div>
   </div>
 </div>

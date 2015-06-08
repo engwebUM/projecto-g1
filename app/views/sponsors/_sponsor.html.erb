@@ -1,20 +1,35 @@
 <tr data-link='<%= sponsor_path(sponsor) %>'>
-    <td><%= link_to sponsor.organization, sponsor_path(sponsor)  %></td>
-    <td><%= sponsor.person_name %></td>
-    <td><%= sponsor.person_role %></td>
-    <td><%= sponsor.person_email %></td>
-    <td><%= sponsor.person_phone %></td>
-    <td><%= sponsor.extra_pay %></td>
-    <td><%= sponsor.state %></td>
-    <td><%= sponsor.next_step %></td>
-    <td><%= sponsor.notes.truncate(20) %></td>
-    <td class="text-right">
+  <td>
+    <%= sponsor.organization %>
+    <br/>
+    <%= sponsor.person_name %> (<%= sponsor.person_role %>)
+  </td>
+  <td>
+    <div class="btn btn-default btn-xs" %>
+      <span class="glyphicon glyphicon-earphone" data-toggle="tooltip" data-placement="top" title="Call to <%= sponsor.person_name %> at <%= sponsor.person_phone %>"></span>
+    </div>
+    <%= mail_to sponsor.person_email, class: "btn btn-info btn-xs" do %>
+      <span class="glyphicon glyphicon-envelope" data-toggle="tooltip" data-placement="top" title="Send an email to <%= sponsor.person_name %>"></span>
+    <% end %>
+  </td>
+  <td><%= sponsor.state %></td>
+  <td><%= sponsor.next_step %></td>
+  <td  class="hidden-xs">
+    <a data-toggle="collapse" href="#collapse<%= sponsor.id %>" aria-expanded="false" aria-controls="collapse<%= sponsor.id %>">
+      See more +
+    </a>
+    <div class="collapse" id="collapse<%= sponsor.id %>">
+      <%= sponsor.notes %>
+      <br>
+      <%= sponsor.extra_pay %> €
+    </div>
+  </td>
+  <td class="text-right">
     <%= link_to edit_sponsor_path(sponsor), class: "btn btn-info btn-xs" do %>
-     <span class="glyphicon glyphicon-edit"></span>
+     <span class="glyphicon glyphicon-edit"></span> Edit
     <% end %>
     <%= link_to sponsor, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" do %>
-     <span class="glyphicon glyphicon-remove-circle"></span>
+     <span class="glyphicon glyphicon-remove-circle"></span> Remove
     <% end %>
-    </td>
-    </td>
+  </td>
 </tr>

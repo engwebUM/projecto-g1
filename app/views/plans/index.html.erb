@@ -22,8 +22,8 @@
             <th class="col-md-3"></th>
           </tr>
           <% @plans.each do |plan| %>
-            <tr class="info">
-              <td><b><%= plan.name %></b> <i>(<%= plan.slots %> slots)</i></td>
+            <tr>
+              <td><b><%= plan.name %></b><br/> (<%= plan.slots %> slots)</td>
               <td><%= plan.price %> €</td>
               <td>
                 <a data-toggle="collapse" href="#collapse<%= plan.id %>" aria-expanded="false" aria-controls="collapse<%= plan.id %>">

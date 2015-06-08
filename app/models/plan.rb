@@ -1,7 +1,7 @@
 class Plan < ActiveRecord::Base
   has_many :sponsor
 
-  self.per_page = 1
+  self.per_page = 5
 
   validates :name, presence: true
   validates_numericality_of :slots, greater_than: 0, presence: true
