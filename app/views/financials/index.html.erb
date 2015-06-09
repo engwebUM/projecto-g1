@@ -1,0 +1,17 @@
+<%= javascript_include_tag "http://www.google.com/jsapi", "chartkick" %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+      <div class="page-header">
+        <h3>Financials</h3>
+      </div>
+      <% if @plans.empty? %>
+      <div>
+        No plans available.
+      </div>
+      <% else %>
+        <%= column_chart @hash %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   get 'welcome/index'
 
+  resources :financials
   resources :plans
   resources :sponsors
   resources :tasks
