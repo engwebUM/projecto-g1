@@ -23,7 +23,6 @@
         </div>
       </div>
       <% end %>
-        <div class="panel-body">
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title">Organization Information</h3>
@@ -34,25 +33,27 @@
                 <%= f.text_field :organization, autofocus: true, class: 'form-control',
                 placeholder: 'e.g. Group Buddies', required: true %>
             </div>
-            <div class="form-group">
+            <div class="form-group row">
+              <div class="col-md-4">
                 <%= f.label :person_name %>
                 <%= f.text_field :person_name, class: 'form-control',
                 placeholder: 'e.g. Roberto Machado', required: true %>
-            </div>
-            <div class="form-group">
-              <%= f.label :person_role %>
-              <%= f.text_field :person_role, class: 'form-control',
-              placeholder: 'e.g. CEO' %>
+              </div>
+              <div class="col-md-4">
+                <%= f.label :person_role %>
+                <%= f.text_field :person_role, class: 'form-control',
+                placeholder: 'e.g. CEO' %>
+              </div>
+              <div class="col-md-4">
+                <%= f.label :person_phone %>
+                <%= f.text_field :person_phone, class: 'form-control',
+                placeholder: 'e.g. +(351) 914 875 874' %>
+              </div>
             </div>
             <div class="form-group">
               <%= f.label :person_email %>
               <%= f.text_field :person_email, class: 'form-control',
               placeholder: 'e.g. rmd@groupbuddies.com', required: true %>
-            </div>
-            <div class="form-group">
-              <%= f.label :person_phone %>
-              <%= f.text_field :person_phone, class: 'form-control',
-              placeholder: 'e.g. +(351) 914 875 874' %>
             </div>
           </div>
         </div>
@@ -74,36 +75,35 @@
             <h3 class="panel-title">Details Adjustment</h3>
           </div>
           <div class="panel-body">
-            <div class="form-group">
-                <% if Plan.all.empty? %>
-                  <div class="input-group col-md-4">
+            <div class="form-group row">
+              <div class="col-md-4">
+                  <% if Plan.all.empty? %>
                     <div>
                     <%= link_to 'New Plan', new_plan_path, {class: 'btn btn-info'} %>
                     <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="right" title="You must create plans first!" aria-hidden="true"></span>
                     </div>
-                  </div>
-                  <script type="text/javascript">
-                    $(function () {
-                      $('[data-toggle="tooltip"]').tooltip()
-                    })
-                  </script>
-                <% else %>
-                  <div class="input-group">
+                    <script type="text/javascript">
+                      $(function () {
+                        $('[data-toggle="tooltip"]').tooltip()
+                      })
+                    </script>
+                  <% else %>
                     <%= f.label :plan_id, "Pretended Plan" %>
                     <%= f.select :plan_id, options_from_collection_for_select(Plan.all, :id, :name, plan_id ), {}, {class: 'form-control'} %>
-                  </div>
-                <%end%>
-            </div>
-            <div class="form-group">
-              <div class="input-group">
-                <%= f.label :state_id %>
-                <%= f.select :state, @states, {}, {class: 'form-control'} %>
+                  <%end%>
               </div>
-            </div>
-            <div class="form-group">
-              <%= f.label :extra_pay %>
-              <%= f.text_field :extra_pay, class: 'form-control',
-              placeholder: 'e.g. 20' %>
+              <div class="col-md-4">
+                  <%= f.label :state_id %>
+                  <%= f.select :state, @states, {}, {class: 'form-control'} %>
+              </div>
+              <div class="col-md-4">
+                <%= f.label :extra_pay %>
+                <div class="input-group">
+                  <%= f.number_field :extra_pay, class: 'form-control',
+                  placeholder: 'e.g. 20' %>
+                  <span class="input-group-addon">€</span>
+                </div>
+              </div>
             </div>
             <div class="form-group">
               <%= f.label :next_step %>
@@ -112,12 +112,11 @@
             </div>
             <div class="form-group">
               <%= f.label :notes %>
-              <%= f.text_area :notes, class: 'form-control',
+              <%= f.text_area :notes, class: 'form-control', rows: '8',
               placeholder: 'e.g. This Sponsor wants to negotiate the price and the logo on the shirts.' %>
             </div>
           </div>
         </div>
-      </div>
       <div class="actions pull-right">
         <%= f.submit "Save", class: 'btn btn-success' %>
       </div>
