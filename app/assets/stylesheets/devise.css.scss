@@ -2,31 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body{
-  font-family: 'Open Sans', sans-serif;
-  margin: 0;
-  margin-top: 20px;
-  padding: 0;
-}
-
 .form {
 	background-color: #FACC26;
 }
 
 .main-logo-size{
   width: 250px;
-}
-
-.menu{
-  width: 59%;
-  text-align: right;
-  display:inline-block;
-  vertical-align:middle;
-}
-
-.logo{
-  width:40%;
-  text-align: left;
-  display:inline-block;
-  vertical-align:middle;
 }
