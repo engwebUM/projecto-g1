@@ -3,7 +3,9 @@ class Sponsor < ActiveRecord::Base
   belongs_to :user
   belongs_to :state
 
-  self.per_page = 2
+  default_scope { order('updated_at DESC') }
+
+  self.per_page = 5
 
   validates :organization, presence: true, uniqueness: true
   validates :person_name, presence: true

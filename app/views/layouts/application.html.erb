@@ -8,8 +8,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= render 'layouts/flash_messages' %>
   <%= render 'layouts/header' %>
+  <div class="errors">
+    <%= render 'layouts/flash_messages' %>
+  <div>
   <%= yield %>
   <%= render 'layouts/footer' %>
 </body>
