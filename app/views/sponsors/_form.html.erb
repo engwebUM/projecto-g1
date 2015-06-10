@@ -37,7 +37,7 @@
             <div class="form-group">
                 <%= f.label :person_name %>
                 <%= f.text_field :person_name, class: 'form-control',
-                placeholder: 'e.g. John Doe', required: true %>
+                placeholder: 'e.g. Roberto Machado', required: true %>
             </div>
             <div class="form-group">
               <%= f.label :person_role %>
@@ -47,12 +47,12 @@
             <div class="form-group">
               <%= f.label :person_email %>
               <%= f.text_field :person_email, class: 'form-control',
-              placeholder: 'e.g. roberto@groupbuddies.com', required: true %>
+              placeholder: 'e.g. rmd@groupbuddies.com', required: true %>
             </div>
             <div class="form-group">
               <%= f.label :person_phone %>
               <%= f.text_field :person_phone, class: 'form-control',
-              placeholder: 'e.g. +(351)984 875 874' %>
+              placeholder: 'e.g. +(351) 914 875 874' %>
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@
           <div class="panel-body">
             <div class="form-group">
               <div class="input-group">
-                <%= f.label :user_id %>
+                <%= f.label :user_id, "Member" %>
                 <%= f.select :user_id, options_from_collection_for_select(User.all, :id, :email, user_id ), {}, {class: 'form-control'} %>
               </div>
             </div>
@@ -77,7 +77,7 @@
             <div class="form-group">
                 <% if Plan.all.empty? %>
                   <div class="input-group col-md-4">
-                    <div class="">
+                    <div>
                     <%= link_to 'New Plan', new_plan_path, {class: 'btn btn-info'} %>
                     <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="right" title="You must create plans first!" aria-hidden="true"></span>
                     </div>
@@ -89,8 +89,7 @@
                   </script>
                 <% else %>
                   <div class="input-group">
-                    <span class="input-group-addon">Pretended Plan</span>
-                    <%= f.label :plan_id %>
+                    <%= f.label :plan_id, "Pretended Plan" %>
                     <%= f.select :plan_id, options_from_collection_for_select(Plan.all, :id, :name, plan_id ), {}, {class: 'form-control'} %>
                   </div>
                 <%end%>
@@ -121,7 +120,6 @@
       </div>
       <div class="actions pull-right">
         <%= f.submit "Save", class: 'btn btn-success' %>
-        <%= link_to 'Back', sponsors_path %>
       </div>
       <% end %>
     </div>
