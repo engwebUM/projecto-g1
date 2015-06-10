@@ -8,12 +8,11 @@ body {
     margin-top: 50px; /* Required margin for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
-.section-heading {
-    color: #2c9acf;
-    margin-top: 0 !important;
+.background-color {
+  background-color: #DEFEF0;
 }
 
-.container-margin {
+.errors {
     margin-top: 50px;
 }
 
@@ -34,15 +33,15 @@ body {
 
 .image-bg-fluid-height {
 	background: asset_url('background.svg') no-repeat center center scroll;
-    padding: 200px 0;
+  padding: 150px 0;
 }
 
 .img-center {
 	margin: 0 auto;
 }
 
-footer {
-    margin: 50px 0;
+.footer {
+  margin: 50px 0;
 }
 
 .SceneOverlay-slogan {
@@ -51,7 +50,14 @@ footer {
 }
 
 .SceneOverlay-info {
-  color: white;
-  font-size: 20px;
+  color: #FACC26;
   margin: 25px;
+}
+
+.SceneOverlay-date{
+  font-size: 24px;
+}
+
+.SceneOverlay-location{
+  font-size: 18px;
 }
