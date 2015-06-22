@@ -9,7 +9,6 @@ class CreateSponsors < ActiveRecord::Migration
       t.float :extra_pay
       t.string :next_step
       t.text :notes
-      t.boolean :is_final, null: false, default: false, index: true
 
       t.belongs_to :user, index: true
       t.belongs_to :plan, index: true

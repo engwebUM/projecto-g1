@@ -32,18 +32,15 @@ ActiveRecord::Schema.define(version: 20150608152955) do
     t.string   "person_email"
     t.string   "person_phone"
     t.float    "extra_pay"
-    t.string   "state"
     t.string   "next_step"
     t.text     "notes"
     t.integer  "user_id"
     t.integer  "plan_id"
     t.integer  "state_id"
-    t.boolean  "is_final",     default: false, null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
-  add_index "sponsors", ["is_final"], name: "index_sponsors_on_is_final"
   add_index "sponsors", ["plan_id"], name: "index_sponsors_on_plan_id"
   add_index "sponsors", ["state_id"], name: "index_sponsors_on_state_id"
   add_index "sponsors", ["user_id"], name: "index_sponsors_on_user_id"
