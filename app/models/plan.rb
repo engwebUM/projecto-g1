@@ -13,7 +13,6 @@ class Plan < ActiveRecord::Base
                                               less_than_or_equal_to: 100,
                                               presence: true
   validates_numericality_of :discount_tickets, greater_than_or_equal_to: 0,
-                                               less_than_or_equal_to: 100,
                                                presence: true
   validates :description, presence: true
 end
