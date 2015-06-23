@@ -1,0 +1,46 @@
+<div class="background-color">
+  <header class="image-bg-fluid-height container-margin">
+     <div class="header-radius" >
+       <%= image_tag("conference_logo.png", class: 'main-logo-size') %>
+       <h2 class="SceneOverlay-slogan">The most <emph>precious</emph> Ruby Conference in the world!</h2>
+       <div class="SceneOverlay-info">
+         <p class="SceneOverlay-date">14-15 September</p>
+         <p class="SceneOverlay-location">BRAGA, Portugal</p>
+       </div>
+       <% if current_user.present? %>
+       <%= link_to tasks_path, class: "btn btn-success btn-lg" do %>
+           <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Go to my current tasks
+       <% end %>
+       <% else %>
+       <%= link_to new_user_session_path, class: "btn btn-success btn-lg" do %>
+           <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Sign up
+       <% end %>
+       <% end %>
+     </div>
+  </header>
+  <div class="row">
+    <div class="container">
+      <div class="col-lg-12">
+          <h2 class="page-header">Our Team</h2>
+      </div>
+      <div class="col-lg-4 col-sm-4 text-center">
+          <%= image_tag("roberto-machado.png", class: 'img-circle img-responsive img-center') %>
+          <h3>Roberto Machado</h3>
+          <h2><small>Founder and Chief Executive Officer at Group Buddies</small></h2>
+          <p>Founded Group Buddies in 2011. Lean Startup Minho founder. Minho.rb founder. RubyConf Portugal organizer.</p>
+      </div>
+      <div class="col-lg-4 col-sm-4 text-center">
+          <%= image_tag("luis-zamith.png", class: 'img-circle img-responsive img-center') %>
+          <h3>Luís Zamith</h3>
+          <h2><small>Founder and Developer at Group Buddies</small></h2>
+          <p>Founder and Developer at Group Buddies where he tries to improve the web one website at a time.</p>
+      </div>
+      <div class="col-lg-4 col-sm-4 text-center">
+          <%= image_tag("miguel-palhas.png", class: 'img-circle img-responsive img-center') %>
+          <h3>Miguel Palhas</h3>
+          <h2><small>Software Developer and SysAdmin at Group Buddies</small></h2>
+          <p>Loves programming since ever. Is obsessed with optimizing and automating everything he does.</p>
+      </div>
+    </div>
+  </div>
+</div>

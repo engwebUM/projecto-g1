@@ -1,6 +1,8 @@
 class Plan < ActiveRecord::Base
   has_many :sponsors
 
+  default_scope { order('updated_at DESC') }
+
   self.per_page = 5
 
   validates :name, presence: true

@@ -9,7 +9,7 @@
     <%= devise_error_messages! %>
       <div class="form-group">
         <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'rmd@groupbuddies.com', required: true %>
+        <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'e.g. rmd@groupbuddies.com', required: true %>
       </div>
       <div class="form-group">
         <%= f.label :password %>
@@ -26,7 +26,7 @@
       </div>
     <% end %>
     </div>
-    <footer class="footer">
+    <footer>
       <%= render "users/shared/links" %>
     </footer>
   </div>
