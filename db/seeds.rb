@@ -1,52 +1,31 @@
 def create_user(first_name, last_name, email, password)
-  User.create(first_name: first_name, last_name: last_name,
-              email: email, password: password)
+  FactoryGirl.create(:user, first_name: first_name, last_name: last_name,
+                     email: email, password: password)
 end
 
-def create_plan(name, number)
-  Plan.create(name: name, slots: number, price: number.to_f, tickets: number,
-              discount_coupon: number.to_f, discount_tickets: number,
-              description: "#{name} plan description")
+create_user('Admin', 'Test', 'admin@email.com', 'password')
+create_user('Eduardo', 'Pinto', 'eduardo@email.com', 'qwertyuiop')
+create_user('Frederico', 'Carvalho', 'fred@email.com', '12345qwerty')
+create_user('Nuno', 'Dionísio', 'nunodio@email.com', 'nunodionisio')
+create_user('Nuno', 'Gomes', 'nunogomes@email.com', 'password')
+create_user('Nuno', 'Santos', 'nunomsantos@email.com', 'nunomsantos')
+
+plans = [['Stone', 500], ['Gold', 2_000], ['Platinum', 4_000],
+         ['Ruby Sponsor', 28_000], ['Host a Lunch', 2_000],
+         ['Host the WiFi', 1_000], ['Host the Karaoke Party', 3_000],
+         ['Host the Farewell Party', 2_000]]
+plans.each do |plan|
+  FactoryGirl.create(:plan, name: plan.first, price: plan.second)
 end
 
-def create_sponsor(number, state, user, plan)
-  Sponsor.create(organization: "Organization #{number}",
-                 person_name: "Person #{number}", person_role: "Role #{number}",
-                 person_email: "person#{number}@email.com",
-                 person_phone: (number.to_s * 9)[0..8], extra_pay: number * 10.0,
-                 state: state, next_step: 'Please try again',
-                 notes: "A note about the #{number.ordinalize} sponsor.",
-                 user_id: user.id, plan_id: plan.id)
+states = [['suggested', false], ['contacted', false], ['pending', false],
+          ['accepted', true], ['rejected', true]]
+states.each do |state|
+  FactoryGirl.create(:state, name: state.first, is_final: state.second)
 end
 
-def create_state(name, is_final)
-  State.create(name: name,
-               is_final: is_final)
-end
-
-@users = []
-@users << create_user('Admin', 'Test', 'admin@email.com', 'password')
-@users << create_user('Eduardo', 'Pinto', 'eduardo@email.com', 'qwertyuiop')
-@users << create_user('Frederico', 'Carvalho', 'fred@email.com', '12345qwerty')
-@users << create_user('Nuno', 'Dionísio', 'nunodio@email.com', 'nunodionisio')
-@users << create_user('Nuno', 'Gomes', 'nunogomes@email.com', 'password')
-@users << create_user('Nuno', 'Santos', 'nunomsantos@email.com', 'nunomsantos')
-
-@plans = []
-plans_names = %w(Stone Bronze Silver Gold Platinum)
-plans_names.each_with_index do |name, index|
-  @plans << create_plan(name, (index + 1) * 10)
-end
-
-@states = []
-states_names = [['suggested', false], ['contacted', false], ['pending', false],
-                ['accepted', true], ['rejected', true]]
-states_names.each do |state|
-  @states << create_state(state.first, state.second)
-end
-
-@users.each_with_index do |user, index_user|
-  @states.each_with_index do |state, index_state|
-    create_sponsor(index_state + 1 + index_user * @users.size, state, user, @plans[rand @plans.size])
+User.all.each do |user|
+  State.all.each do |state|
+    FactoryGirl.create(:sponsor, user: user, state: state, plan: Plan.all.sample)
   end
 end
