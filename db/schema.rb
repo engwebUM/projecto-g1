@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427155555) do
+ActiveRecord::Schema.define(version: 20150608152955) do
 
   create_table "plans", force: :cascade do |t|
     t.string   "name"
@@ -32,17 +32,28 @@ ActiveRecord::Schema.define(version: 20150427155555) do
     t.string   "person_email"
     t.string   "person_phone"
     t.float    "extra_pay"
-    t.string   "state"
     t.string   "next_step"
     t.text     "notes"
     t.integer  "user_id"
     t.integer  "plan_id"
+    t.integer  "state_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
   add_index "sponsors", ["plan_id"], name: "index_sponsors_on_plan_id"
+  add_index "sponsors", ["state_id"], name: "index_sponsors_on_state_id"
   add_index "sponsors", ["user_id"], name: "index_sponsors_on_user_id"
+
+  create_table "states", force: :cascade do |t|
+    t.string   "name",                       null: false
+    t.boolean  "is_final",   default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "states", ["is_final"], name: "index_states_on_is_final"
+  add_index "states", ["name"], name: "index_states_on_name"
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"

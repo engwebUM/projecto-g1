@@ -1,6 +1,7 @@
 class Sponsor < ActiveRecord::Base
   belongs_to :plan
   belongs_to :user
+  belongs_to :state
 
   self.per_page = 2
 

@@ -7,12 +7,12 @@ class CreateSponsors < ActiveRecord::Migration
       t.string :person_email
       t.string :person_phone
       t.float :extra_pay
-      t.string :state
       t.string :next_step
       t.text :notes
 
       t.belongs_to :user, index: true
       t.belongs_to :plan, index: true
+      t.belongs_to :state, index: true
 
       t.timestamps null: false
     end

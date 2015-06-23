@@ -1,12 +1,16 @@
-class State
-  ALL_STATES = %w(Suggested Contacted Pending Accepted Rejected)
-  CLOSED_STATES = %w(Accepted Rejected)
+class State < ActiveRecord::Base
+  has_many :sponsors
 
-  def self.all
-    ALL_STATES
-  end
+  validates :name, presence: true, uniqueness: true
+  validates_inclusion_of :is_final, in: [true, false]
 
   def self.closed
-    CLOSED_STATES
+    State.where(is_final: true)
+  end
+
+  private
+
+  def display_name
+    name.capitalize
   end
 end

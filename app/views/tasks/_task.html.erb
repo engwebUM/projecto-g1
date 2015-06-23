@@ -3,6 +3,6 @@
   <td><%= link_to task.organization, sponsor_path(task) %></td>
   <td><%= task.plan.name %></td>
   <td><%= task.next_step %></td>
-  <td><%= select_tag "state", options_for_select(State.all, task.state) %></td>
+  <td><%= select_tag "state", options_from_collection_for_select(states, :id, :display_name, task.state.id) %></td>
   <td><%= l task.updated_at, format: :short %></td>
 </tr>
