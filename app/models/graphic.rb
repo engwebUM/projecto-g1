@@ -1,5 +1,4 @@
 class Graphic
-
   def initialize(plans)
     @plans = plans
   end
@@ -27,5 +26,4 @@ class Graphic
     end
     @return_profit
   end
-
 end

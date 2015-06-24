@@ -5,5 +5,4 @@ class FinancialsController < ApplicationController
     @plans = Plan.all
     @graphic = Graphic.new(@plans)
   end
-
 end
