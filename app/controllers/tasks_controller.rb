@@ -6,4 +6,14 @@ class TasksController < ApplicationController
     @finished_tasks = Sponsor.where(state: State.closed).paginate(page: params['page_finished'])
     @states = State.all
   end
+
+  def update_state
+    @task = Sponsor.find(params[:task])
+
+    if @task.update_attribute(:state_id, params[:state])
+      render json: { message: 'Task state was successfully updated.' }
+    else
+      render json: { message: 'Task state was not updated.' }
+    end
+  end
 end

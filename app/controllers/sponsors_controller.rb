@@ -1,7 +1,9 @@
 class SponsorsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_sponsor, only: [:show, :edit, :update, :destroy]
-  before_action :set_states, only: [:index, :new,  :create, :edit, :update]
+  before_action :set_sponsor, only: [:edit, :update, :destroy]
+  before_action :set_states, only: [:new, :create, :edit, :update]
+  before_action :set_users, only: [:new, :create, :edit, :update]
+  before_action :set_plans, only: [:new, :create, :edit, :update]
 
   def index
     @sponsors = Sponsor.paginate(page: params[:page])
@@ -17,16 +19,16 @@ class SponsorsController < ApplicationController
       flash[:success] = 'Sponsor was successfully created.'
       redirect_to sponsors_path
     else
-      flash[:danger] = 'Sponsor was unsuccessfully created.'
+      flash[:danger] = 'Sponsor was not created.'
       render :new
     end
   end
 
   def destroy
     if @sponsor.destroy
-      flash[:success] = 'Sponsor was successfully removed'
+      flash[:success] = 'Sponsor was successfully removed.'
     else
-      flash[:danger] = 'Sponsor was not removed'
+      flash[:danger] = 'Sponsor was not removed.'
     end
     redirect_to sponsors_path
   end
@@ -36,9 +38,11 @@ class SponsorsController < ApplicationController
 
   def update
     if @sponsor.update(sponsor_params)
+      flash[:success] = 'Sponsor was successfully updated.'
       redirect_to sponsors_path
     else
-      render 'edit'
+      flash[:danger] = 'Sponsor was not updated.'
+      render :edit
     end
   end
 
@@ -48,11 +52,19 @@ class SponsorsController < ApplicationController
     @states = State.all
   end
 
+  def set_plans
+    @plans = Plan.all
+  end
+
+  def set_users
+    @users = User.all
+  end
+
   def set_sponsor
     @sponsor = Sponsor.find(params[:id])
   end
 
   def sponsor_params
-    params.require(:sponsor).permit(:organization, :person_name, :person_role, :person_email, :person_phone, :extra_pay, :state, :next_step, :user_id, :plan_id, :notes)
+    params.require(:sponsor).permit(:organization, :person_name, :person_role, :person_email, :person_phone, :extra_pay, :next_step, :notes, :user_id, :plan_id, :state_id)
   end
 end

@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'welcome/index'
+  post 'tasks/update_state', as: 'update_state'
 
-  resources :financials
-  resources :plans
-  resources :sponsors
-  resources :tasks
+  resources :plans, except: [:show]
+  resources :sponsors, except: [:show]
+  resources :tasks, only: [:index]
+  resources :financials, only: [:index]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

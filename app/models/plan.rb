@@ -1,7 +1,7 @@
 class Plan < ActiveRecord::Base
   has_many :sponsors
 
-  default_scope { order('updated_at DESC') }
+  default_scope { order(updated_at: :DESC) }
 
   self.per_page = 5
   TICKET_PRICE = 1
@@ -18,6 +18,10 @@ class Plan < ActiveRecord::Base
   validates_numericality_of :discount_tickets, greater_than_or_equal_to: 0,
                                                presence: true
   validates :description, presence: true
+
+  def display_name
+    name.capitalize
+  end
 
   def incoming_cash
     sponsors.count * price
