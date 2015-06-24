@@ -12,16 +12,16 @@
       <span class="glyphicon glyphicon-envelope" data-toggle="tooltip" data-placement="top" title="Send an email to <%= sponsor.person_name %>"></span>
     <% end %>
   </td>
-  <td><%= sponsor.state %></td>
+  <td><%= sponsor.state_name %></td>
   <td><%= sponsor.next_step %></td>
   <td  class="hidden-xs">
     <a data-toggle="collapse" href="#collapse<%= sponsor.id %>" aria-expanded="false" aria-controls="collapse<%= sponsor.id %>">
       See more +
     </a>
     <div class="collapse" id="collapse<%= sponsor.id %>">
-      <%= sponsor.notes %>
+      Extra pay: <%= sponsor.extra_pay %> €
       <br>
-      <%= sponsor.extra_pay %> €
+      Notes: <%= sponsor.notes %>
     </div>
   </td>
   <td class="text-right">

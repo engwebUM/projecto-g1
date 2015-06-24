@@ -3,7 +3,7 @@ class Sponsor < ActiveRecord::Base
   belongs_to :user
   belongs_to :state
 
-  default_scope { order(updated_at: :DESC)}
+  default_scope { order(updated_at: :DESC) }
 
   self.per_page = 5
 
