@@ -12,3 +12,38 @@
     </div>
   </div>
 </div>
+<script>
+$(document).ready(function() {
+  $('.state-select').change(function() {
+    var taskId = $(this).data('id');
+    var stateId = $(this).val();
+    var delayTime = 1000;
+    var task = "#task_" + taskId;
+
+    $.ajax({
+       url: "<%= update_state_path %>",
+       type: "POST",
+       data: {
+         task: taskId,
+         state: stateId
+       },
+       dataType: "json",
+       complete: function() {},
+       success: function(data, textStatus, xhr) {
+         addClassTemporary("success", delayTime, task);
+       },
+       error: function() {
+         addClassTemporary("danger", delayTime, task);
+       }
+    });
+  });
+
+    function addClassTemporary(classToAdd, time, task){
+      var task = $(task);
+      task.addClass(classToAdd).delay(time).queue(function(next){
+        task.removeClass(classToAdd).dequeue();
+      });
+    }
+
+});
+</script>
