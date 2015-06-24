@@ -10,7 +10,16 @@
         No plans available.
       </div>
       <% else %>
-        <%= column_chart @hash %>
+
+        <%= pie_chart @graphic.return_profit %>
+        <p class="chart-label">Profit by plan chart<p>
+
+        <%= column_chart @graphic.return_of_investiment %>
+        <p class="chart-label">Return of investiment chart<p>
+
+        <%= column_chart @graphic.return_extra_pay_total %>
+        <p class="chart-label">Extra pay by plan chart<p>
+
       <% end %>
     </div>
   </div>

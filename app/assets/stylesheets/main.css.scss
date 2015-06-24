@@ -5,59 +5,63 @@
  */
 
 body {
-    margin-top: 50px; /* Required margin for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+		margin-top: 50px; /* Required margin for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
 .background-color {
-  background-color: #DEFEF0;
+	background-color: #DEFEF0;
 }
 
 .errors {
-    margin-top: 50px;
+		margin-top: 50px;
 }
 
 .header-radius {
-    border-radius: 25px;
-    background-color:rgba(0, 0, 0, 0.7);
-    padding: 25px 0px;
+		border-radius: 25px;
+		background-color:rgba(0, 0, 0, 0.7);
+		padding: 25px 0px;
 }
 
 .image-bg-fluid-height,
 .image-bg-fixed-height {
-    text-align: center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
+		text-align: center;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		background-size: cover;
+		-o-background-size: cover;
 }
 
 .image-bg-fluid-height {
 	background: asset_url('background.svg') no-repeat center center scroll;
-  padding: 150px 0;
+	padding: 150px 0;
 }
 
 .img-center {
 	margin: 0 auto;
 }
 
+.chart-label{
+	text-align: center;
+}
+
 .footer {
-  margin: 50px 0;
+	margin: 50px 0;
 }
 
 .SceneOverlay-slogan {
-  color: white;
-  font-size: 30px;
+	color: white;
+	font-size: 30px;
 }
 
 .SceneOverlay-info {
-  color: #FACC26;
-  margin: 25px;
+	color: #FACC26;
+	margin: 25px;
 }
 
 .SceneOverlay-date{
-  font-size: 24px;
+	font-size: 24px;
 }
 
 .SceneOverlay-location{
-  font-size: 18px;
+	font-size: 18px;
 }
