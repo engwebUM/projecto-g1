@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+    <% if @state.nil? %>
+      <div class="page-header">
+        <h3>Uh-oh!</h3>
+      </div>
+      <p>There is no such state. Maybe you should try to <%= link_to 'build it','https://en.wikipedia.org/wiki/State-building' %>?</p>
+    <% else %>
+      <div class="page-header">
+        <h3>All <%= @state.display_name %> Sponsors</h3>
+      </div>
+      <%= render partial: 'task_by_state_table', locals: { tasks: @tasks } %>
+    <% end %>
+    </div>
+  </div>
+</div>

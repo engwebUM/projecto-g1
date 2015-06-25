@@ -1,0 +1,24 @@
+<% if tasks.empty? %>
+There are no tasks to show here.
+<% else %>
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Sponsor</th>
+        <th>Plan</th>
+        <th>Next Step</th>
+        <th>Respons.</th>
+        <th>Updated</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: 'task_by_state', collection: tasks %>
+    </tbody>
+  </table>
+</div>
+<div class="text-center">
+  <%= will_paginate tasks, param_name: 'page', renderer: BootstrapPagination::Rails %>
+</div>
+<% end %>
