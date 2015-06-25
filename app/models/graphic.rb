@@ -1,26 +1,6 @@
-class ReturnInvestment
-  def data(plans)
-    plans.each_with_object({}) do |plan, graph_data|
-      graph_data[plan.name] = plan.return_of_investment.round(2)
-    end
-  end
-end
-
-class ExtraPay
-  def data(plans)
-    plans.each_with_object({}) do |plan, graph_data|
-      graph_data[plan.name] = plan.extra_pay_total.round(2)
-    end
-  end
-end
-
-class Profit
-  def data(plans)
-    plans.each_with_object({}) do |plan, graph_data|
-      graph_data[plan.name] = plan.profit.round(2)
-    end
-  end
-end
+require 'extra_pay'
+require 'profit'
+require 'return_investment'
 
 class Graphic
   GRAPHS = {
