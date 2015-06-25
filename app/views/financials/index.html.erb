@@ -11,23 +11,20 @@
       </div>
 
       <% else %>
-      <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#profit">Profit Chart</a></li>
-        <li><a data-toggle="tab" href="#roi">Return of Investment Chart</a></li>
-        <li><a data-toggle="tab" href="#extra_pay">Extra Pay Chart</a></li>
-      </ul>
-
-      <div class="tab-content">
-        <div id="profit" class="tab-pane fade in active">
+      <div class="content">
+        <div>
           <%= pie_chart @graphic.data_for(:profit) %>
+          <p class="text-center"><small>Profit Chart</small></p>
         </div>
 
-        <div id="roi" class="tab-pane fade">
+        <div>
           <%= column_chart @graphic.data_for(:roi) %>
+          <p class="text-center"><small>Return of Investment Chart</small></p>
         </div>
 
-        <div id="extra_pay" class="tab-pane fade">
+        <div>
           <%= column_chart @graphic.data_for(:extra_pay) %>
+          <p class="text-center"><small>Extra Pay Chart</small></p>
         </div>
       </div>
       <% end %>
@@ -35,3 +32,4 @@
     </div>
   </div>
 </div>
+
