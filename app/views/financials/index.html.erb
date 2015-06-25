@@ -11,15 +11,14 @@
       </div>
       <% else %>
 
-        <%= pie_chart @graphic.return_profit %>
+        <%= pie_chart @graphic.data_for(:profit) %>
         <p class="chart-label">Profit by plan chart<p>
 
-        <%= column_chart @graphic.return_of_investiment %>
-        <p class="chart-label">Return of investiment chart<p>
+        <%= column_chart @graphic.data_for(:roi) %>
+        <p class="chart-label">Return of investment chart<p>
 
-        <%= column_chart @graphic.return_extra_pay_total %>
+        <%= column_chart @graphic.data_for(:extra_pay) %>
         <p class="chart-label">Extra pay by plan chart<p>
-
       <% end %>
     </div>
   </div>
