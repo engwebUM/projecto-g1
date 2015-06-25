@@ -9,17 +9,36 @@
       <div>
         No plans available.
       </div>
+
       <% else %>
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#profit">Profit Chart</a></li>
+        <li><a data-toggle="tab" href="#roi"  onclick="change();">Return of Investment Chart</a></li>
+        <li><a data-toggle="tab" href="#extra_pay" onclick="change();">Extra Pay Chart</a></li>
+      </ul>
 
-        <%= pie_chart @graphic.data_for(:profit) %>
-        <p class="chart-label">Profit by plan chart<p>
+      <div class="tab-content">
+        <div id="profit" class="tab-pane fade in active">
+          <%= pie_chart @graphic.data_for(:profit) %>
+        </div>
 
-        <%= column_chart @graphic.data_for(:roi) %>
-        <p class="chart-label">Return of investment chart<p>
+        <div id="roi" class="chart-hidden tab-pane fade in active">
+          <%= column_chart @graphic.data_for(:roi) %>
+        </div>
 
-        <%= column_chart @graphic.data_for(:extra_pay) %>
-        <p class="chart-label">Extra pay by plan chart<p>
+        <div id="extra_pay" class="chart-hidden tab-pane fade in active">
+          <%= column_chart @graphic.data_for(:extra_pay) %>
+        </div>
+      </div>
       <% end %>
+
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+function change(){
+  document.getElementById("roi").style.visibility="visible";
+  document.getElementById("extra_pay").style.visibility="visible";
+}
+</script>
