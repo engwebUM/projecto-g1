@@ -13,8 +13,8 @@
       <% else %>
       <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#profit">Profit Chart</a></li>
-        <li><a data-toggle="tab" href="#roi"  onclick="change();">Return of Investment Chart</a></li>
-        <li><a data-toggle="tab" href="#extra_pay" onclick="change();">Extra Pay Chart</a></li>
+        <li><a data-toggle="tab" href="#roi">Return of Investment Chart</a></li>
+        <li><a data-toggle="tab" href="#extra_pay">Extra Pay Chart</a></li>
       </ul>
 
       <div class="tab-content">
@@ -22,11 +22,11 @@
           <%= pie_chart @graphic.data_for(:profit) %>
         </div>
 
-        <div id="roi" class="chart-hidden tab-pane fade in active">
+        <div id="roi" class="tab-pane fade">
           <%= column_chart @graphic.data_for(:roi) %>
         </div>
 
-        <div id="extra_pay" class="chart-hidden tab-pane fade in active">
+        <div id="extra_pay" class="tab-pane fade">
           <%= column_chart @graphic.data_for(:extra_pay) %>
         </div>
       </div>
@@ -35,10 +35,3 @@
     </div>
   </div>
 </div>
-
-<script type="text/javascript">
-function change(){
-  document.getElementById("roi").style.visibility="visible";
-  document.getElementById("extra_pay").style.visibility="visible";
-}
-</script>
