@@ -1,17 +1,28 @@
 <div class="container">
+  <% if @selected_state.nil? %>
   <div class="row">
     <div class="col-md-offset-2 col-md-8">
-    <% if @state.nil? %>
       <div class="page-header">
         <h3>Uh-oh!</h3>
       </div>
-      <p>There is no such state. Maybe you should try to <%= link_to 'build it','https://en.wikipedia.org/wiki/State-building' %>?</p>
-    <% else %>
-      <div class="page-header">
-        <h3>All <%= @state.display_name %> Sponsors</h3>
-      </div>
-      <%= render partial: 'task_by_state_table', locals: { tasks: @tasks } %>
-    <% end %>
+      <p>There is no such state. Maybe you should try to <%= link_to 'build it','https://en.wikipedia.org/wiki/State-building'%>?</p>
     </div>
   </div>
+  <% else %>
+  <div class="row">
+    <div class="col-md-2">
+      <div class="page-header">
+        <h3>&nbsp;</h3>
+      </div>
+      <%= render partial: 'sidenav', locals: { selected_state: @selected_state, states: @states.where(is_final: false), title: 'Unfinished' } %>
+      <%= render partial: 'sidenav', locals: { selected_state: @selected_state, states: @states.where(is_final: true), title: 'Finished' } %>
+    </div>
+    <div class="col-md-8">
+      <div class="page-header">
+        <h3>All <%= @selected_state.display_name %> Sponsors</h3>
+      </div>
+      <%= render partial: 'task_by_state_table', locals: { tasks: @tasks } %>
+    </div>
+  </div>
+  <% end %>
 </div>

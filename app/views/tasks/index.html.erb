@@ -1,6 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-offset-2 col-md-8">
+    <div class="col-md-2">
+      <div class="page-header">
+        <h3>&nbsp;</h3>
+      </div>
+      <%= render partial: 'sidenav', locals: { selected_state: @selected_state, states: @states.where(is_final: false), title: 'Unfinished' } %>
+      <%= render partial: 'sidenav', locals: { selected_state: @selected_state, states: @states.where(is_final: true), title: 'Finished' } %>
+    </div>
+    <div class="col-md-8">
       <div class="page-header">
         <h3>My Unfinished Tasks</h3>
       </div>

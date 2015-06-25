@@ -9,7 +9,7 @@ class TasksController < ApplicationController
 
   def show
     @tasks = Sponsor.where(state: params[:id]).paginate(page: params['page'], per_page: 10)
-    @state = State.where(id: params[:id]).first
+    @selected_state = State.where(id: params[:id]).first
     @states = State.all
   end
 

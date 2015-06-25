@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">
+      <h4><%= title %></h4>
+    </div>
+    <% if states.empty? %>
+    <div class="panel-body">
+      <p>No states for this category.</p>
+    </div>
+    <% else %>
+    <div class="list-group">
+      <% states.each do |state| %>
+      <% activeness = ''
+         activeness << ' active' if !selected_state.nil? && state.id == selected_state.id %>
+      <%= link_to truncate(state.display_name, length: 15), task_path(state), title: state.display_name, class: 'list-group-item' << activeness %>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>
