@@ -9,26 +9,35 @@
       <div>
         No plans available.
       </div>
-
       <% else %>
+
       <div class="content">
-        <div>
-          <%= pie_chart @graphic.data_for(:profit) %>
-          <p class="text-center"><small>Profit Chart</small></p>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Profit Chart</h3>
+          </div>
+          <div class="panel-body">
+            <%= pie_chart @graphic.data_for(:profit) %>
+          </div>
         </div>
-
-        <div>
-          <%= column_chart @graphic.data_for(:roi) %>
-          <p class="text-center"><small>Return of Investment Chart</small></p>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Return of Investment Chart</h3>
+          </div>
+          <div class="panel-body">
+            <%= column_chart @graphic.data_for(:roi) %>
+          </div>
         </div>
-
-        <div>
-          <%= column_chart @graphic.data_for(:extra_pay) %>
-          <p class="text-center"><small>Extra Pay Chart</small></p>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Extra Pay Chart</h3>
+          </div>
+          <div class="panel-body">
+            <%= column_chart @graphic.data_for(:extra_pay) %>
+          </div>
         </div>
       </div>
       <% end %>
-
     </div>
   </div>
 </div>
