@@ -4,7 +4,7 @@
     <div class="page-header">
       <h3>Create a new Sponsor</h3>
     </div>
-    <%= form_for@sponsor do |f| %>
+    <%= form_for @sponsor do |f| %>
       <% if @sponsor.errors.any? %>
       <div class="row">
         <div class="col-md-12">
@@ -65,7 +65,7 @@
             <div class="form-group">
               <div class="input-group">
                 <%= f.label :user_id, "Member" %>
-                <%= f.select :user_id, options_from_collection_for_select(User.all, :id, :email, user_id ), {}, {class: 'form-control'} %>
+                <%= f.select :user_id, options_from_collection_for_select(@users, :id, :email, user_id), {}, {class: 'form-control'} %>
               </div>
             </div>
           </div>
@@ -89,12 +89,12 @@
                     </script>
                   <% else %>
                     <%= f.label :plan_id, "Pretended Plan" %>
-                    <%= f.select :plan_id, options_from_collection_for_select(Plan.all, :id, :name, plan_id ), {}, {class: 'form-control'} %>
-                  <%end%>
+                    <%= f.select :plan_id, options_from_collection_for_select(@plans, :id, :display_name, plan_id), {}, {class: 'form-control'} %>
+                  <% end %>
               </div>
               <div class="col-md-4">
-                  <%= f.label :state_id %>
-                  <%= f.select :state, @states, {}, {class: 'form-control'} %>
+                  <%= f.label :state_id, "Pretended State" %>
+                  <%= f.select :state_id, options_from_collection_for_select(@states, :id, :display_name, state_id), {}, {class: 'form-control'} %>
               </div>
               <div class="col-md-4">
                 <%= f.label :extra_pay %>

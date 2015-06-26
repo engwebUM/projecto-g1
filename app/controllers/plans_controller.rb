@@ -1,6 +1,6 @@
 class PlansController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_plan, only: [:show, :edit, :update, :destroy]
+  before_action :set_plan, only: [:edit, :update, :destroy]
 
   def index
     @plans = Plan.paginate(page: params[:page])

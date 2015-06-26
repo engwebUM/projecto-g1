@@ -1,8 +1,8 @@
-<tr>
+<tr id="task_<%= task.id %>">
   <td><%= task.id %></td>
-  <td><%= link_to task.organization, sponsor_path(task) %></td>
-  <td><%= task.plan.name %></td>
+  <td><%= link_to task.organization, edit_sponsor_path(task) %></td>
+  <td><%= link_to task.plan_name, edit_plan_path(task.plan) %></td>
   <td><%= task.next_step %></td>
-  <td><%= select_tag "state", options_from_collection_for_select(states, :id, :display_name, task.state.id) %></td>
+  <td><%= select_tag "state", options_from_collection_for_select(states, :id, :display_name, task.state.id), data: { id: task.id }, class: "state-select" %></td>
   <td><%= l task.updated_at, format: :short %></td>
 </tr>
