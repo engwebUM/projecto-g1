@@ -10,8 +10,35 @@
         No plans available.
       </div>
       <% else %>
-        <%= column_chart @hash %>
+
+      <div class="content">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Profit Chart</h3>
+          </div>
+          <div class="panel-body">
+            <%= pie_chart @graphic.data_for(:profit) %>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Return of Investment Chart</h3>
+          </div>
+          <div class="panel-body">
+            <%= column_chart @graphic.data_for(:roi) %>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Extra Pay Chart</h3>
+          </div>
+          <div class="panel-body">
+            <%= column_chart @graphic.data_for(:extra_pay) %>
+          </div>
+        </div>
+      </div>
       <% end %>
     </div>
   </div>
 </div>
+

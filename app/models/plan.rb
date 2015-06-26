@@ -47,7 +47,7 @@ class Plan < ActiveRecord::Base
     sponsors.count * (ticket_offers + ticket_discounts)
   end
 
-  def return_of_investiment
+  def return_of_investment
     (profit - cost).to_f / cost
   end
 end
