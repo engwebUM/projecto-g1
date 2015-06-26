@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+      <div class="page-header">
+        <h3>States</h3>
+      </div>
+      <div class="col-md-8">
+        <% if @states.empty? %>
+        <div>
+          No plans available.
+        </div>
+        <% else %>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>State</th>
+                <th>Is Final?</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render @states %>
+            </tbody>
+          </table>
+            <%= will_paginate @states, renderer: BootstrapPagination::Rails %>
+        <% end %>
+      </div>
+        <div class="col-md-4">
+          <%= render 'form' %>
+        </div>
+    </div>
+  </div>
+</div>

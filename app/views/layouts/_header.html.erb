@@ -28,6 +28,10 @@
               <li role="presentation"><%= link_to('Plans', plans_path) %></a></li>
               <li role="presentation"><%= link_to('Sponsors', sponsors_path) %></li>
               <li role="presentation"><%= link_to('Financials', financials_path) %></li>
+              <li role="presentation"><%= link_to(states_path) do %>
+                <span class="glyphicon glyphicon-cog"></span>
+                <% end %>
+              </li>
               <li>
                 <%= link_to edit_user_registration_path do %>
                     <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= current_user.first_name %>

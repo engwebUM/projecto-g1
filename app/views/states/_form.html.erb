@@ -1,0 +1,28 @@
+<%= form_for @state do |f| %>
+  <% if @state.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@state.errors.count, "error") %> prevented this state from being saved:</h2>
+      <ul>
+      <% @state.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group adv-filter col-md-12">
+    <h4>New State</h4>
+    <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'e.g. Accepted', required: true %>
+    </div>
+    <div class="form-group">
+        <%= f.label :is_final %>
+        <%= f.check_box :is_final %>
+    </div>
+    <div class="form-group">
+      <div class="actions text-right">
+        <%= f.submit "Save", class: 'btn btn-success' %>
+      </div>
+    </div>
+  </div>
+<% end %>
