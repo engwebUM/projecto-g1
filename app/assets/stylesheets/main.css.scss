@@ -33,7 +33,7 @@ body {
 
 .image-bg-fluid-height {
 	background: asset_url('background.svg');
-	background-size: 100% 100%;
+	background-size: cover;
     background-repeat: no-repeat;
 	padding: 150px 0;
 }
