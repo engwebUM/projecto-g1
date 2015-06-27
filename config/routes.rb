@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :sponsors, except: [:show]
   resources :tasks, only: [:index]
   resources :financials, only: [:index]
-  resources :states
+  resources :states, except: [:show]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

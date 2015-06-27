@@ -1,20 +1,18 @@
 class StatesController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_state, only: [:show, :edit, :update, :destroy]
+  before_action :set_state, only: [:edit, :update, :destroy]
+  before_action :paginate_states, only: [:index, :edit, :new]
 
   def index
-    @states = State.all
-    paginate_states
     @state = State.new
   end
 
   def new
     @state = State.new
+    render :index
   end
 
   def edit
-    @states = State.all
-    paginate_states
     render :index
   end
 
@@ -40,7 +38,7 @@ class StatesController < ApplicationController
   end
 
   def destroy
-    if !@state.sponsors.empty?
+    if @state.sponsors.exists?
       flash[:danger] = 'There are Sponsors with this State'
     elsif @state.destroy
       flash[:success] = 'State was successfully removed.'
@@ -57,7 +55,7 @@ class StatesController < ApplicationController
   end
 
   def paginate_states
-    @states = @states.paginate(page: params[:page], per_page: 10)
+    @states = State.paginate(page: params[:page], per_page: 10)
   end
 
   def state_params
