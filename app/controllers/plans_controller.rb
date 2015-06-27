@@ -35,7 +35,9 @@ class PlansController < ApplicationController
   end
 
   def destroy
-    if @plan.destroy
+    if @plan.sponsors.exists?
+      flash[:danger] = 'There are Sponsors with this Plan.'
+    elsif @plan.destroy
       flash[:success] = 'Plan was successfully removed.'
     else
       flash[:danger] = 'Plan was not removed.'
