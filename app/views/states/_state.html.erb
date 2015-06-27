@@ -1,0 +1,15 @@
+<tr >
+  <td><%= state.display_name %></td>
+  <td><%= state.display_is_final %></td>
+  <td>
+    <div class="pull-right">
+      <%= link_to edit_state_path(state), class: "btn btn-info btn-xs" do %>
+        <span class="glyphicon glyphicon-edit"> Edit</span>
+      <% end %>
+      <%= link_to state, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" do %>
+        <span class="glyphicon glyphicon-remove-circle"> Remove</span>
+      <% end %>
+    </div>
+
+  </td>
+</tr>

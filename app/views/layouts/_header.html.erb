@@ -25,9 +25,15 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li role="presentation"><%= link_to('My Tasks', tasks_path) %></a></li>
-              <li role="presentation"><%= link_to('Plans', plans_path) %></a></li>
               <li role="presentation"><%= link_to('Sponsors', sponsors_path) %></li>
               <li role="presentation"><%= link_to('Financials', financials_path) %></li>
+              <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="glyphicon glyphicon-cog"></span> Manage<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li role="presentation"><%= link_to('Plans', plans_path) %></a></li>
+                  <li role="presentation"><%= link_to('States', states_path) %></li>
+                </ul>
+              </li>
               <li>
                 <%= link_to edit_user_registration_path do %>
                     <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= current_user.first_name %>

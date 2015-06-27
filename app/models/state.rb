@@ -8,9 +8,15 @@ class State < ActiveRecord::Base
     State.where(is_final: true)
   end
 
-  private
-
   def display_name
-    name.capitalize
+    name.titleize
+  end
+
+  def display_is_final
+    if is_final
+      'Yes'
+    else
+      'No'
+    end
   end
 end
