@@ -15,12 +15,14 @@
       <% else %>
       <div class="table-responsive">
         <table class="table table-hover">
-          <tr>
-            <th class="col-md-2">Plans</th>
-            <th class="col-md-2">Base Price</th>
-            <th class="col-md-5"></th>
-            <th class="col-md-3"></th>
-          </tr>
+          <thead>
+            <tr>
+              <th class="col-md-2">Plans</th>
+              <th class="col-md-2">Base Price</th>
+              <th class="col-md-5"></th>
+              <th class="col-md-3"></th>
+            </tr>
+          </thead>
           <% @plans.each do |plan| %>
             <tr>
               <td><b><%= plan.name %></b><br/> (<%= plan.slots %> slots)</td>
