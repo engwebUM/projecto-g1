@@ -33,6 +33,12 @@ gem 'will_paginate', '~> 3.0.6'
 
 gem 'will_paginate-bootstrap'
 
+gem 'factory_girl_rails'
+
+gem 'faker'
+
+gem 'chartkick'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -57,16 +63,9 @@ group :development, :test do
   gem 'rubocop', require: false
 
   gem 'rspec-rails'
-
-  gem 'factory_girl_rails'
-
-  # For charts
-  gem "chartkick"
 end
 
 group :test do
-  gem 'faker'
-
   gem 'guard-rspec'
 
   gem 'launchy'
