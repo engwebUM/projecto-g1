@@ -1,6 +1,6 @@
 <tr>
   <td><%= task_by_state.id %></td>
-  <td><%= link_to truncate(task_by_state.organization, length: 15), sponsor_path(task_by_state), title: task_by_state.organization %></td>
+  <td><%= link_to truncate(task_by_state.organization, length: 15), edit_sponsor_path(task_by_state), title: task_by_state.organization %></td>
   <td><%= truncate task_by_state.plan.name, length: 15 %></td>
   <td><%= truncate task_by_state.next_step, length: 35 %></td>
   <td><%= task_by_state.user.shortened_name %></td>

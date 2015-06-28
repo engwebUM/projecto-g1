@@ -4,8 +4,8 @@
       <div class="page-header">
         <h3>&nbsp;</h3>
       </div>
-      <%= render partial: 'sidenav', locals: { selected_state: @selected_state, states: @states.where(is_final: false), title: 'Unfinished' } %>
-      <%= render partial: 'sidenav', locals: { selected_state: @selected_state, states: @states.where(is_final: true), title: 'Finished' } %>
+      <%= render partial: 'sidenav', locals: { selected_state: @selected_state, states: @states.opened, title: 'Unfinished' } %>
+      <%= render partial: 'sidenav', locals: { selected_state: @selected_state, states: @states.closed, title: 'Finished' } %>
     </div>
     <div class="col-md-8">
       <div class="page-header">
@@ -13,7 +13,7 @@
       </div>
       <%= render partial: 'task_table', locals: { tasks: @user_unfinished_tasks, param_name: 'page_unfinished', states: @states } %>
       <div class="page-header">
-        <h3>Finished Tasks</h3>
+        <h3>All Finished Tasks</h3>
       </div>
       <%= render partial: 'task_table', locals: { tasks: @finished_tasks, param_name: 'page_finished', states: @states  } %>
     </div>
