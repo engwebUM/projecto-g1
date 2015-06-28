@@ -10,7 +10,7 @@ class TasksController < ApplicationController
   def show
     @tasks = Sponsor.with_state(params[:id]).paginate(page: params['page'], per_page: 10)
     @selected_state = State.find_by(id: params[:id])
-    @states = State.all
+    @states = State.all.by_alphabetical_order
   end
 
   def update_state
