@@ -28,17 +28,12 @@ body {
 }
 
 .image-bg-fluid-height{
+    background: asset_url('background.svg');
     text-align: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-}
-
-.image-bg-fluid-height {
-    background: asset_url('background.svg');
-    background-size: cover;
-    background-repeat: no-repeat;
     padding: 150px 0;
 }
 
