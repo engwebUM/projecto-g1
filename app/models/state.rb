@@ -1,6 +1,9 @@
 class State < ActiveRecord::Base
   has_many :sponsors
 
+  default_scope { order(updated_at: :DESC) }
+  scope :by_alphabetical_order, -> { reorder(:name) }
+
   validates :name, presence: true, uniqueness: true
   validates_inclusion_of :is_final, in: [true, false]
 
