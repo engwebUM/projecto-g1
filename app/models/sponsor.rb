@@ -4,6 +4,10 @@ class Sponsor < ActiveRecord::Base
   belongs_to :state
 
   default_scope { order(updated_at: :DESC) }
+  scope :from_user, ->(user) { where(user: user) }
+  scope :with_state, ->(state) { where(state: state) }
+  scope :with_open_state, -> { where(state: State.opened) }
+  scope :with_closed_state, -> { where(state: State.closed) }
 
   self.per_page = 5
 
