@@ -2,8 +2,14 @@ class TasksController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @user_unfinished_tasks = Sponsor.where(user: current_user).where.not(state: State.closed).paginate(page: params['page_unfinished'])
+    @user_unfinished_tasks = Sponsor.where(user: current_user).where(state: State.opened).paginate(page: params['page_unfinished'])
     @finished_tasks = Sponsor.where(state: State.closed).paginate(page: params['page_finished'])
+    @states = State.all
+  end
+
+  def show
+    @tasks = Sponsor.where(state: params[:id]).paginate(page: params['page'], per_page: 10)
+    @selected_state = State.find_by(id: params[:id])
     @states = State.all
   end
 

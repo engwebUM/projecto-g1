@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :plans, except: [:show]
   resources :sponsors, except: [:show]
-  resources :tasks, only: [:index]
+  resources :tasks, only: [:index, :show]
   resources :financials, only: [:index]
   resources :states, except: [:show]
 

@@ -8,6 +8,10 @@ class State < ActiveRecord::Base
     State.where(is_final: true)
   end
 
+  def self.opened
+    State.where(is_final: false)
+  end
+
   def display_name
     name.titleize
   end
