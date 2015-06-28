@@ -2,7 +2,7 @@
   <td>
     <%= sponsor.organization %>
     <br/>
-    <%= sponsor.person_name %> (<%= sponsor.person_role %>)
+    <span class="personal-information">(<%= sponsor.person_name %>, <%= sponsor.person_role %>)</span>
   </td>
   <td>
     <div class="btn btn-default btn-xs" %>
@@ -13,13 +13,13 @@
     <% end %>
   </td>
   <td><%= sponsor.state_name %></td>
-  <td><%= sponsor.next_step %></td>
+  <td><%= truncate sponsor.next_step, length: 35 %></td>
   <td  class="hidden-xs">
     <a data-toggle="collapse" href="#collapse<%= sponsor.id %>" aria-expanded="false" aria-controls="collapse<%= sponsor.id %>">
       See more +
     </a>
     <div class="collapse" id="collapse<%= sponsor.id %>">
-      Extra pay: <%= sponsor.extra_pay %> €
+      Diff.: <%= sponsor.extra_pay %> &euro;
       <br>
       Notes: <%= sponsor.notes %>
     </div>
