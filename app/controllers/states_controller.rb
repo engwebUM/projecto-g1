@@ -22,7 +22,6 @@ class StatesController < ApplicationController
       flash[:success] = 'State was successfully created.'
       redirect_to states_path
     else
-      flash[:danger] = 'State was not created.'
       render :new
     end
   end
@@ -32,7 +31,6 @@ class StatesController < ApplicationController
       flash[:success] = 'State was successfully updated.'
       redirect_to states_path
     else
-      flash[:danger] = 'State was not updated.'
       render :edit
     end
   end
@@ -40,10 +38,9 @@ class StatesController < ApplicationController
   def destroy
     if @state.sponsors.exists?
       flash[:danger] = 'There are Sponsors with this State'
-    elsif @state.destroy
-      flash[:success] = 'State was successfully removed.'
     else
-      flash[:danger] = 'State was not removed.'
+      @state.destroy
+      flash[:success] = 'State was successfully removed.'
     end
     redirect_to states_path
   end

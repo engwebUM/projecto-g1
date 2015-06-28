@@ -19,7 +19,6 @@ class PlansController < ApplicationController
       flash[:success] = 'Plan was successfully created.'
       redirect_to plans_path
     else
-      flash[:danger] = 'Plan was not created.'
       render :new
     end
   end
@@ -29,7 +28,6 @@ class PlansController < ApplicationController
       flash[:success] = 'Plan was successfully updated.'
       redirect_to edit_plan_path
     else
-      flash[:danger] = 'Plan was not updated.'
       render :edit
     end
   end
@@ -37,10 +35,9 @@ class PlansController < ApplicationController
   def destroy
     if @plan.sponsors.exists?
       flash[:danger] = 'There are Sponsors with this Plan.'
-    elsif @plan.destroy
-      flash[:success] = 'Plan was successfully removed.'
     else
-      flash[:danger] = 'Plan was not removed.'
+      @plan.destroy
+      flash[:success] = 'Plan was successfully removed.'
     end
     redirect_to plans_path
   end
