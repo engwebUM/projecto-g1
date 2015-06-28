@@ -19,18 +19,8 @@ class SponsorsController < ApplicationController
       flash[:success] = 'Sponsor was successfully created.'
       redirect_to sponsors_path
     else
-      flash[:danger] = 'Sponsor was not created.'
       render :new
     end
-  end
-
-  def destroy
-    if @sponsor.destroy
-      flash[:success] = 'Sponsor was successfully removed.'
-    else
-      flash[:danger] = 'Sponsor was not removed.'
-    end
-    redirect_to sponsors_path
   end
 
   def edit
@@ -41,9 +31,14 @@ class SponsorsController < ApplicationController
       flash[:success] = 'Sponsor was successfully updated.'
       redirect_to sponsors_path
     else
-      flash[:danger] = 'Sponsor was not updated.'
       render :edit
     end
+  end
+
+  def destroy
+    @sponsor.destroy
+    flash[:success] = 'Sponsor was successfully removed.'
+    redirect_to sponsors_path
   end
 
   private
